@@ -116,10 +116,10 @@ main{
 
 .main-containers{
     margin-top: 200px;
-    width: 100%;
+    width: 75%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
 
 }
 
