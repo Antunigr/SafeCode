@@ -30,7 +30,6 @@ header{
 .nav-btn{
     font-size: 22px;
     padding: 0 10px;
-    font-family: 'Source Code Pro', monospace;
     font-weight: 500;
     align-items: center;
 }
@@ -39,7 +38,6 @@ header{
     position: absolute;
     padding-left: 35%;
     font-size: 22px;
-    font-family: 'Source Code Pro', monospace;
     font-weight: 500;
 
 }
@@ -48,7 +46,6 @@ header{
     position: absolute;
     padding-right: 35%;
     font-size: 22px;
-    font-family: 'Source Code Pro', monospace;
     font-weight: 500;
 
 }
@@ -108,4 +105,47 @@ main{
     width: 80%;
 }
 
+.role2{
+    border-bottom: 2px solid #F5F5F5; 
+    width: 40%;
+}
 
+
+/* ------------ question container -------------- */
+
+
+.main-containers{
+    margin-top: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.main-containers-area{
+    width: 100%;
+
+}
+
+.question-container{
+    width: 40%;
+    padding: 20px;
+}
+
+.question-container-title{
+}
+
+.question-container-content{
+    padding-bottom: 25px;
+
+}
+
+.question-container-tags{
+    padding: 10px;
+    background-color: aqua;
+}
+
+.comment-container{
+    padding-top: 25px;
+}

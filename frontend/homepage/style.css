@@ -30,7 +30,6 @@ header{
 .nav-btn{
     font-size: 22px;
     padding: 0 10px;
-    font-family: 'Source Code Pro', monospace;
     font-weight: 500;
     align-items: center;
 }
@@ -39,7 +38,6 @@ header{
     position: absolute;
     padding-left: 35%;
     font-size: 22px;
-    font-family: 'Source Code Pro', monospace;
     font-weight: 500;
 
 }
@@ -48,7 +46,6 @@ header{
     position: absolute;
     padding-right: 35%;
     font-size: 22px;
-    font-family: 'Source Code Pro', monospace;
     font-weight: 500;
 
 }
