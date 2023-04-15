@@ -1,0 +1,306 @@
+/* _content/backend/Views/Home/index.cshtml.rz.scp.css */
+*[b-e868cy2ctn]{
+    /* font-family: 'Source Code Pro', monospace; */
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+  
+  }
+  
+  /* introduction-container */
+  
+  .introduction-container[b-e868cy2ctn]{
+    width: 85%;
+    height: 500px;
+    background-color: #262626;
+    font-family: 'DM Sans', sans-serif;
+    border-radius: 20px;
+  
+  }
+  
+  .SafeCode[b-e868cy2ctn]{
+    color: #FFCC00;
+  }
+  
+  
+  .introduction-container-title[b-e868cy2ctn]{
+    font-size: 45px;
+    padding-left: 5%;
+    padding-right: 20%;
+    padding-top: 50px;
+    color: white;
+  }
+  
+  .introduction-container-content[b-e868cy2ctn]{
+    font-size: 21px;
+    padding-left: 5%;
+    padding-right: 10%;
+    padding-top: 50px;
+    color: white;   
+  }
+  
+  
+  /* redirection container */
+  
+  
+  
+  .redirection-container[b-e868cy2ctn]{
+    /* background-color: #3a3b66; */
+    height: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .redirection-display-area[b-e868cy2ctn]{
+    width: 80%;
+    display: flex;
+    flex-direction: center;
+    height: 800px;
+    margin-top: 300px;
+  }
+  
+  .redirection-display[b-e868cy2ctn]{
+    margin: 0 60px;
+    background-color: #F5F5F5;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .redirection-display-title[b-e868cy2ctn]{
+    font-size: 40px;
+    text-align: center;
+    padding-bottom:80px;
+    padding-top:40px;
+  }
+  
+  .redirection-display-content[b-e868cy2ctn]{
+    padding: 0 10%;
+    font-size: 20px;
+  }
+  
+  #redirection-display-button[b-e868cy2ctn]{
+    font-size: 22px;
+    text-align: center;
+    padding: 30px;
+    background-color: #F5F5F5;
+    margin-top: 60%;
+    width: 40%;
+    border: 2px solid #262626;
+    transition: 0.7s ease-out;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+  
+  #redirection-display-button:hover[b-e868cy2ctn]{
+    transition: 0.5s ease-out;
+    background-color: #FFCC00;
+  }
+  
+  .role[b-e868cy2ctn]{
+    position: absolute;
+    margin-top: 720px;
+    border-bottom: 2px solid #b8b8b8; 
+    width: 90%;
+  }
+  
+  
+  /* footer */
+  
+  footer[b-e868cy2ctn]{
+    height: 300px;
+    background-color: #262626;
+  }
+/* _content/backend/Views/Posts/Posts.cshtml.rz.scp.css */
+
+
+.filter-container[b-7676dvugqh]{
+    width: 70%;
+    background-color: #f5f5f5;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction:column;
+    height: 200px;
+}
+
+.filter-container-title[b-7676dvugqh]{
+    font-size: 25px;
+}
+
+.filter-tag-container[b-7676dvugqh]{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.filter-tag[b-7676dvugqh]{
+    width: 24%;
+    font-size: 16px;
+    padding: 2px;
+}
+
+.role[b-7676dvugqh]{
+    position: absolute;
+    margin-top: 450px;
+    border-bottom: 2px solid #F5F5F5; 
+    width: 80%;
+}
+
+.role2[b-7676dvugqh]{
+    border-bottom: 2px solid #F5F5F5; 
+    width: 40%;
+}
+
+
+/* ------------ question container -------------- */
+
+.ask-pergunta[b-7676dvugqh]{
+    align-items: end;
+}
+
+.ask[b-7676dvugqh]{
+    font-size: 1.7em;
+}
+
+.perguntas[b-7676dvugqh]{
+   position: absolute;
+   margin-top: 520px;
+   padding-right: 1230px;
+   font-size: 2em ;
+}
+
+.main-containers[b-7676dvugqh]{
+    margin-top: 200px;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+}
+
+.main-containers-area[b-7676dvugqh]{
+    width: 100%;
+
+}
+
+.question-container[b-7676dvugqh]{
+    width: 40%;
+    padding: 20px;
+}
+
+.question-container-title[b-7676dvugqh]{
+}
+
+.question-container-content[b-7676dvugqh]{
+    padding-bottom: 25px;
+
+}
+
+.question-container-tags[b-7676dvugqh]{
+    padding: 10px;
+    background-color: aqua;
+}
+
+.comment-container[b-7676dvugqh]{
+    padding-top: 25px;
+}
+/* _content/backend/Views/Shared/_Layout.cshtml.rz.scp.css */
+*[b-guihv28zom]{
+  /* font-family: 'Source Code Pro', monospace; */
+  margin: 0;
+  padding: 0;
+  font-family: 'DM Sans', sans-serif;
+
+}
+
+html[b-guihv28zom]{
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.main[b-guihv28zom]{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header[b-guihv28zom]{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+.nav-main[b-guihv28zom]{
+  display: flex;
+  margin: 20px;
+  justify-content: center;
+}
+
+.nav-btn[b-guihv28zom]{
+  font-size: 22px;
+  padding: 0 10px;
+  font-weight: 500;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  transition: 2 ease-out;
+
+}
+
+.nav-btn:hover[b-guihv28zom]{
+  color: #FFCC00;
+  transition: 2 ease-out;
+}
+
+.right-btn[b-guihv28zom]{
+  position: absolute;
+  margin-left: 35%;
+  font-size: 22px;
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
+}
+.right-btn:hover[b-guihv28zom]{
+  color: #FFCC00;
+  transition: 2 ease-out;
+}
+
+
+.left-btn[b-guihv28zom]{
+  position: absolute;
+  margin-right: 35%;
+  font-size: 22px;
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
+}
+.left-btn:hover[b-guihv28zom]{
+  color: #FFCC00;
+  transition: 2 ease-out;
+}
+
+.search-main[b-guihv28zom]{
+  width: 40%;
+  padding: 15px;  
+  border: 0; 
+  border-radius: 5px;    
+  background-color: #F5F5F5;
+}
+
+.search-main[b-guihv28zom]::placeholder{
+  font-size: 18px;
+  color: #b8b8b8;
+}
+
+footer[b-guihv28zom]{
+  height: 300px;
+  background-color: #262626;
+}

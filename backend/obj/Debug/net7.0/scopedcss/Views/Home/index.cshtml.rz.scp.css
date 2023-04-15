@@ -1,0 +1,117 @@
+*[b-e868cy2ctn]{
+    /* font-family: 'Source Code Pro', monospace; */
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+  
+  }
+  
+  /* introduction-container */
+  
+  .introduction-container[b-e868cy2ctn]{
+    width: 85%;
+    height: 500px;
+    background-color: #262626;
+    font-family: 'DM Sans', sans-serif;
+    border-radius: 20px;
+  
+  }
+  
+  .SafeCode[b-e868cy2ctn]{
+    color: #FFCC00;
+  }
+  
+  
+  .introduction-container-title[b-e868cy2ctn]{
+    font-size: 45px;
+    padding-left: 5%;
+    padding-right: 20%;
+    padding-top: 50px;
+    color: white;
+  }
+  
+  .introduction-container-content[b-e868cy2ctn]{
+    font-size: 21px;
+    padding-left: 5%;
+    padding-right: 10%;
+    padding-top: 50px;
+    color: white;   
+  }
+  
+  
+  /* redirection container */
+  
+  
+  
+  .redirection-container[b-e868cy2ctn]{
+    /* background-color: #3a3b66; */
+    height: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .redirection-display-area[b-e868cy2ctn]{
+    width: 80%;
+    display: flex;
+    flex-direction: center;
+    height: 800px;
+    margin-top: 300px;
+  }
+  
+  .redirection-display[b-e868cy2ctn]{
+    margin: 0 60px;
+    background-color: #F5F5F5;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .redirection-display-title[b-e868cy2ctn]{
+    font-size: 40px;
+    text-align: center;
+    padding-bottom:80px;
+    padding-top:40px;
+  }
+  
+  .redirection-display-content[b-e868cy2ctn]{
+    padding: 0 10%;
+    font-size: 20px;
+  }
+  
+  #redirection-display-button[b-e868cy2ctn]{
+    font-size: 22px;
+    text-align: center;
+    padding: 30px;
+    background-color: #F5F5F5;
+    margin-top: 60%;
+    width: 40%;
+    border: 2px solid #262626;
+    transition: 0.7s ease-out;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+  
+  #redirection-display-button:hover[b-e868cy2ctn]{
+    transition: 0.5s ease-out;
+    background-color: #FFCC00;
+  }
+  
+  .role[b-e868cy2ctn]{
+    position: absolute;
+    margin-top: 720px;
+    border-bottom: 2px solid #b8b8b8; 
+    width: 90%;
+  }
+  
+  
+  /* footer */
+  
+  footer[b-e868cy2ctn]{
+    height: 300px;
+    background-color: #262626;
+  }

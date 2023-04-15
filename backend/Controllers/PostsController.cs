@@ -3,16 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers;
 
-public class HomeController : Controller
+[Route("Posts")]
+public class PostsController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public PostsController(ILogger<HomeController> logger)
     {
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public IActionResult Posts()
     {
         return View();
     }

@@ -1,4 +1,4 @@
-﻿*{
+*[b-guihv28zom]{
   /* font-family: 'Source Code Pro', monospace; */
   margin: 0;
   padding: 0;
@@ -6,19 +6,19 @@
 
 }
 
-html{
+html[b-guihv28zom]{
   padding: 0;
   margin: 0;
   border: 0;
 }
 
-.main{
+.main[b-guihv28zom]{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.header{
+.header[b-guihv28zom]{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,13 +26,13 @@ html{
   padding-bottom: 30px;
 }
 
-.nav-main{
+.nav-main[b-guihv28zom]{
   display: flex;
   margin: 20px;
   justify-content: center;
 }
 
-.nav-btn{
+.nav-btn[b-guihv28zom]{
   font-size: 22px;
   padding: 0 10px;
   font-weight: 500;
@@ -43,12 +43,12 @@ html{
 
 }
 
-.nav-btn:hover{
+.nav-btn:hover[b-guihv28zom]{
   color: #FFCC00;
   transition: 2 ease-out;
 }
 
-.right-btn{
+.right-btn[b-guihv28zom]{
   position: absolute;
   margin-left: 35%;
   font-size: 22px;
@@ -56,13 +56,13 @@ html{
   text-decoration: none;
   color: black;
 }
-.right-btn:hover{
+.right-btn:hover[b-guihv28zom]{
   color: #FFCC00;
   transition: 2 ease-out;
 }
 
 
-.left-btn{
+.left-btn[b-guihv28zom]{
   position: absolute;
   margin-right: 35%;
   font-size: 22px;
@@ -70,12 +70,12 @@ html{
   text-decoration: none;
   color: black;
 }
-.left-btn:hover{
+.left-btn:hover[b-guihv28zom]{
   color: #FFCC00;
   transition: 2 ease-out;
 }
 
-.search-main{
+.search-main[b-guihv28zom]{
   width: 40%;
   padding: 15px;  
   border: 0; 
@@ -83,12 +83,12 @@ html{
   background-color: #F5F5F5;
 }
 
-.search-main::placeholder{
+.search-main[b-guihv28zom]::placeholder{
   font-size: 18px;
   color: #b8b8b8;
 }
 
-footer{
+footer[b-guihv28zom]{
   height: 300px;
   background-color: #262626;
 }
