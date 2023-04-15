@@ -1,7 +1,10 @@
-namespace SafeCode.Models.Categories
+using System.ComponentModel.DataAnnotations;
+
+namespace SafeCode.Models
 {
     public class Categories
     {
+        [Key]
         public int Id { get; set; }
         public string Java { get; set; }
         public string Csharp { get; set; }
@@ -19,7 +22,7 @@ namespace SafeCode.Models.Categories
         public string Cloud { get; set; }
         public string Api { get; set; }
         public string Android { get; set; }
-        public Question.Question PostsForCategory { get; set; }
 
+        public ICollection<Question> PostsForCategory { get; set; }
     }
 }

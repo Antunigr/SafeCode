@@ -1,13 +1,16 @@
+using System.ComponentModel.DataAnnotations;
 
-namespace SafeCode.Models.Question
+namespace SafeCode.Models
 {
     public class Question
     {
-        public int Id { get; }
+        [Key]
+        public int Id { get; set; }
         public string User { get; set; } // trocar string for userModel
         public string Title { get; set; }
         public string Description { get; set; }
         public string CodeArea { get; set; }
-        public Categories.Categories CategoriesTag { get; set; }
+        public int CategoryId { get; set; }
+        public Categories CategoriesTag { get; set; }
     }
 }
