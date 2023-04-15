@@ -17,4 +17,10 @@ public class HomeController : Controller
         return View();
     }
 
+    [Route("Pergunta")]
+    public IActionResult Pergunta()
+    {
+        return View();
+    }
+
 }

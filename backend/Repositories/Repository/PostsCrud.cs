@@ -3,11 +3,11 @@ using SafeCode.Models;
 
 namespace SafeCode.Repositories
 {
-    public class PostCrud : IPostsCrud
+    public class PostsCrud : IPostsCrud
     {
         public readonly ContextQuest _context;
 
-        public PostCrud(ContextQuest context)
+        public PostsCrud(ContextQuest context)
         {
             _context = context;
         }

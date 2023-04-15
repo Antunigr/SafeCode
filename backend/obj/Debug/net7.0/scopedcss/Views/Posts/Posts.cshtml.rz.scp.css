@@ -7,6 +7,7 @@
     display: flex;
     flex-direction:column;
     height: 200px;
+    margin-bottom: 149px;
 }
 
 .filter-container-title[b-7676dvugqh]{
@@ -40,8 +41,10 @@
 
 /* ------------ question container -------------- */
 
-.ask-pergunta[b-7676dvugqh]{
-    align-items: end;
+.ask-container[b-7676dvugqh]{
+    position: absolute;
+    margin-top: 470px;
+    margin-left: 56%;
 }
 
 .ask[b-7676dvugqh]{
@@ -51,12 +54,12 @@
 .perguntas[b-7676dvugqh]{
    position: absolute;
    margin-top: 520px;
-   padding-right: 1230px;
+   padding-right: 65%;
    font-size: 2em ;
 }
 
 .main-containers[b-7676dvugqh]{
-    margin-top: 200px;
+    margin-top: 40px;
     width: 75%;
     display: flex;
     flex-direction: column;

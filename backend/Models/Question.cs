@@ -10,7 +10,7 @@ namespace SafeCode.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string CodeArea { get; set; }
-        public int CategoryId { get; set; }
-        public Categories CategoriesTag { get; set; }
+        // public int CategoryId { get; set; }
+        // public Categories CategoriesTag { get; set; }
     }
 }

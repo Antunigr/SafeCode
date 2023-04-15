@@ -23,6 +23,6 @@ namespace SafeCode.Models
         public string Api { get; set; }
         public string Android { get; set; }
 
-        public ICollection<Question> PostsForCategory { get; set; }
+        // public ICollection<Question> PostsForCategory { get; set; }
     }
 }

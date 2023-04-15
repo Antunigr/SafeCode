@@ -18645,6 +18645,11 @@
   "RootNamespace": "backend",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Home\\Pergunta.cshtml",
+      "TargetPath": "Views\\Home\\Pergunta.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"

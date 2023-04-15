@@ -1,0 +1,16 @@
+@using SafeCode.Models
+@model Question
+
+@{
+    ViewData["Title"] = "Pergunta Page";
+}
+
+
+<form method="post" asp-controller="Posts" asp-action="CreatePost">
+    <input type="text" asp-for="User" placeholder="qual seu nome"> 
+    <input type="text" asp-for="Title" placeholder="escolha um titulo"> 
+    <input type="text" asp-for="Description" placeholder="uma descricao"> 
+    <input type="text" asp-for="CodeArea" placeholder="code area"> 
+    <input type="submit" value="enviar">
+
+</form>
