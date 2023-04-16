@@ -11,8 +11,8 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ContextQuest))]
-    [Migration("20230415083804_Initial")]
-    partial class Initial
+    [Migration("20230416102741_ManytoMany")]
+    partial class ManytoMany
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,11 +26,11 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.Categories", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CategoriesId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoriesId"));
 
                     b.Property<string>("Android")
                         .IsRequired()
@@ -96,18 +96,18 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("CategoriesId");
 
                     b.ToTable("CategoriesModel");
                 });
 
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("QuestionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionId"));
 
                     b.Property<string>("CodeArea")
                         .IsRequired()
@@ -125,9 +125,53 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("QuestionId");
 
                     b.ToTable("QuestionModel");
+                });
+
+            modelBuilder.Entity("SafeCode.Models.QuestionCategories", b =>
+                {
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoriesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("QuestionId", "CategoriesId");
+
+                    b.HasIndex("CategoriesId");
+
+                    b.ToTable("QuestionCategoriesModel");
+                });
+
+            modelBuilder.Entity("SafeCode.Models.QuestionCategories", b =>
+                {
+                    b.HasOne("SafeCode.Models.Categories", "Categories")
+                        .WithMany("QuestionCategories")
+                        .HasForeignKey("CategoriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SafeCode.Models.Question", "Question")
+                        .WithMany("QuestionCategories")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Categories");
+
+                    b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("SafeCode.Models.Categories", b =>
+                {
+                    b.Navigation("QuestionCategories");
+                });
+
+            modelBuilder.Entity("SafeCode.Models.Question", b =>
+                {
+                    b.Navigation("QuestionCategories");
                 });
 #pragma warning restore 612, 618
         }

@@ -26,6 +26,14 @@ public class PostsController : Controller
         return View(quest);
     }
 
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Posts(int id)
+    {
+        var quest = await GetQuestion();
+        _logger.LogInformation($"Numero de Posts: {quest.Count()}");
+        return View(quest);
+    }
+
 
     public async Task<IEnumerable<Question>> GetQuestion()
     {
@@ -43,7 +51,7 @@ public class PostsController : Controller
     {
 
         var newQuestion = await _postsCrud.Create(questionInput);
-        CreatedAtAction(nameof(GetQuestion), new { id = newQuestion.Id }, newQuestion);
+        CreatedAtAction(nameof(GetQuestion), new { id = newQuestion.QuestionId }, newQuestion);
 
         return RedirectToAction("Posts", "Posts");
 

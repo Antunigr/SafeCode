@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SafeCode.Models;
 
@@ -10,9 +11,11 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ContextQuest))]
-    partial class ContextQuestModelSnapshot : ModelSnapshot
+    [Migration("20230416104009_ManytoMany2")]
+    partial class ManytoMany2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

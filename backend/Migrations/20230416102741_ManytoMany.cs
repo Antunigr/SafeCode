@@ -5,7 +5,7 @@
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class ManytoMany : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,7 +14,7 @@ namespace backend.Migrations
                 name: "CategoriesModel",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    CategoriesId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Java = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Csharp = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -35,14 +35,14 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoriesModel", x => x.Id);
+                    table.PrimaryKey("PK_CategoriesModel", x => x.CategoriesId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "QuestionModel",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    QuestionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     User = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -51,13 +51,45 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_QuestionModel", x => x.Id);
+                    table.PrimaryKey("PK_QuestionModel", x => x.QuestionId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "QuestionCategoriesModel",
+                columns: table => new
+                {
+                    CategoriesId = table.Column<int>(type: "int", nullable: false),
+                    QuestionId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_QuestionCategoriesModel", x => new { x.QuestionId, x.CategoriesId });
+                    table.ForeignKey(
+                        name: "FK_QuestionCategoriesModel_CategoriesModel_CategoriesId",
+                        column: x => x.CategoriesId,
+                        principalTable: "CategoriesModel",
+                        principalColumn: "CategoriesId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_QuestionCategoriesModel_QuestionModel_QuestionId",
+                        column: x => x.QuestionId,
+                        principalTable: "QuestionModel",
+                        principalColumn: "QuestionId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_QuestionCategoriesModel_CategoriesId",
+                table: "QuestionCategoriesModel",
+                column: "CategoriesId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "QuestionCategoriesModel");
+
             migrationBuilder.DropTable(
                 name: "CategoriesModel");
 
