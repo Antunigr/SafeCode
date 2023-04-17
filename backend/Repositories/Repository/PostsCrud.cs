@@ -31,9 +31,10 @@ namespace SafeCode.Repositories
             return await _context.QuestionModel.ToListAsync();
         }
 
-        public async Task<Question> Get(int Id)
+        public async Task<IEnumerable<Question>> GetPostsById(int categoriesId)
         {
-            return await _context.QuestionModel.FindAsync(Id);
+            var results = await _context.QuestionModel.Where(post => post.CategoriesId == categoriesId).ToListAsync();
+            return results;
         }
 
         public async Task Update(Question question)

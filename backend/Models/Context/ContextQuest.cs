@@ -11,14 +11,15 @@ namespace SafeCode.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
-            .Entity<QuestionCategories>()
-            .HasKey(qc => new { qc.QuestionId, qc.CategoriesId });
+            .Entity<Categories>()
+            .HasMany(qc => qc.Question)
+            .WithOne(cq => cq.Categories);
         }
+
 
 
         public DbSet<Categories> CategoriesModel { get; set; }
         public DbSet<Question> QuestionModel { get; set; }
-        public DbSet<QuestionCategories> QuestionCategoriesModel { get; set; }
 
 
 

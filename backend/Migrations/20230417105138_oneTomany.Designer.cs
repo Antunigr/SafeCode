@@ -11,8 +11,8 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ContextQuest))]
-    [Migration("20230416104009_ManytoMany2")]
-    partial class ManytoMany2
+    [Migration("20230417105138_oneTomany")]
+    partial class oneTomany
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,11 +43,14 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
-                    b.Property<int>("QuestionId")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int>("CategoriesId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CodeArea")
                         .IsRequired()
@@ -57,6 +60,9 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -65,53 +71,27 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("QuestionId");
+                    b.HasKey("id");
+
+                    b.HasIndex("CategoriesId");
 
                     b.ToTable("QuestionModel");
                 });
 
-            modelBuilder.Entity("SafeCode.Models.QuestionCategories", b =>
-                {
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CategoriesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("QuestionId", "CategoriesId");
-
-                    b.HasIndex("CategoriesId");
-
-                    b.ToTable("QuestionCategoriesModel");
-                });
-
-            modelBuilder.Entity("SafeCode.Models.QuestionCategories", b =>
+            modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
                     b.HasOne("SafeCode.Models.Categories", "Categories")
-                        .WithMany("QuestionCategories")
+                        .WithMany("Question")
                         .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SafeCode.Models.Question", "Question")
-                        .WithMany("QuestionCategories")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Categories");
-
-                    b.Navigation("Question");
                 });
 
             modelBuilder.Entity("SafeCode.Models.Categories", b =>
                 {
-                    b.Navigation("QuestionCategories");
-                });
-
-            modelBuilder.Entity("SafeCode.Models.Question", b =>
-                {
-                    b.Navigation("QuestionCategories");
+                    b.Navigation("Question");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,6 +7,9 @@ namespace SafeCode.Models
         [Key]
         public int CategoriesId { get; set; }
         public string CategoryName { get; set; }
+        public ICollection<Question> Question { get; set; }
+
+
         // public string Java { get; set; }
         // public string Csharp { get; set; }
         // public string Ruby { get; set; }
@@ -24,7 +27,11 @@ namespace SafeCode.Models
         // public string Api { get; set; }
         // public string Android { get; set; }
 
-        public IList<QuestionCategories> QuestionCategories { get; set; }
+
+        public override string ToString()
+        {
+            return "CaregoryId: " + this.CategoriesId + " CategoryName: " + this.CategoryName;
+        }
 
     }
 }

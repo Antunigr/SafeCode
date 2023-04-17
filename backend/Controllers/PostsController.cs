@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SafeCode.Models;
 using SafeCode.Repositories;
 
@@ -8,14 +9,17 @@ namespace backend.Controllers;
 [Route("Posts")]
 public class PostsController : Controller
 {
+
+    private readonly ContextQuest _context;
     private readonly IPostsCrud _postsCrud;
 
     private readonly ILogger<HomeController> _logger;
 
-    public PostsController(ILogger<HomeController> logger, IPostsCrud postsCrud)
+    public PostsController(ILogger<HomeController> logger, IPostsCrud postsCrud, ContextQuest context)
     {
         _logger = logger;
         _postsCrud = postsCrud;
+        _context = context;
     }
 
     [HttpGet]
@@ -26,12 +30,22 @@ public class PostsController : Controller
         return View(quest);
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> Posts(int id)
+    [HttpGet("{CategoriesId}")]
+    [Route("/{CategoriesId}")]
+    public async Task<IActionResult> PostsId(int CategoriesId)
     {
-        var quest = await GetQuestion();
-        _logger.LogInformation($"Numero de Posts: {quest.Count()}");
-        return View(quest);
+        var questionsList = await GetQuestionId(CategoriesId);
+        List<Question> questions = new List<Question>();
+
+
+
+        foreach (var question in questionsList)
+        {
+            questions.Add(question);
+        }
+
+
+        return View(questions);
     }
 
 
@@ -40,10 +54,9 @@ public class PostsController : Controller
         return await _postsCrud.Get();
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Question>> GetQuestion(int id)
+    public async Task<IEnumerable<Question>> GetQuestionId(int CategoriesId)
     {
-        return await _postsCrud.Get(id);
+        return await _postsCrud.GetPostsById(CategoriesId);
     }
 
     [HttpPost]
@@ -57,6 +70,18 @@ public class PostsController : Controller
 
     }
 
+    // [Route("/test")]
+    // public IActionResult test()
+    // {
+    //     var List = _context.QuestionModel.Include(p => p.Categories).Where(p => p.Categories.CategoriesId.Equals(2)).ToList();
+    //     List.ForEach(p =>
+    //     {
+    //         Console.WriteLine(p.ToString());
+    //     });
+
+    //     return Content("ore");
+
+    // }
 
 
 }

@@ -2,7 +2,7 @@
 @model IEnumerable<Question>
 
 @{
-    ViewData["Title"] = "Posts Page";
+    ViewData["Title"] = "PostsId Page";
 }
     
     <div class="filter-container">
@@ -58,11 +58,6 @@
                 <div class="comment-container">
                     <a>Ver comentarios</a>
                 </div>
-                  @if (item.Categories != null)
-                    {
-                        @item.Categories.CategoryName
-                    }
-                    
             </div>
         <div class="role2"></div>
     </div>
