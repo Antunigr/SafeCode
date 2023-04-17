@@ -51,12 +51,15 @@ public class PostsController : Controller
 
     public async Task<IEnumerable<Question>> GetQuestion()
     {
-        return await _postsCrud.Get();
+        // return await _postsCrud.Get();
+        return await _context.QuestionModel.Include(q => q.Categories).ToListAsync();
+
     }
 
     public async Task<IEnumerable<Question>> GetQuestionId(int CategoriesId)
     {
-        return await _postsCrud.GetPostsById(CategoriesId);
+        // return await _postsCrud.GetPostsById(CategoriesId);
+        return await _context.QuestionModel.Include(q => q.Categories).Where(q => q.CategoriesId == CategoriesId).ToListAsync();
     }
 
     [HttpPost]
