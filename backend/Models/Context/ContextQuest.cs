@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace SafeCode.Models
 {
-    public class ContextQuest : DbContext
+    public class AppDbContext : IdentityDbContext
     {
-        public ContextQuest(DbContextOptions<ContextQuest> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 

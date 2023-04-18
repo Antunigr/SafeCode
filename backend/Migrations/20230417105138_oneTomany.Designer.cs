@@ -10,7 +10,7 @@ using SafeCode.Models;
 
 namespace backend.Migrations
 {
-    [DbContext(typeof(ContextQuest))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20230417105138_oneTomany")]
     partial class oneTomany
     {

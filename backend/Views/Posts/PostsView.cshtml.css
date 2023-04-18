@@ -1,6 +1,10 @@
 
+*{
+    margin: 0;
 
-.filter-container[b-7676dvugqh]{
+}
+
+.filter-container{
     width: 70%;
     background-color: #f5f5f5;
     padding: 20px 30px;
@@ -10,86 +14,108 @@
     margin-bottom: 149px;
 }
 
-.filter-container-title[b-7676dvugqh]{
+.filter-container-title{
     font-size: 25px;
 }
 
-.filter-tag-container[b-7676dvugqh]{
+.filter-tag-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.filter-tag[b-7676dvugqh]{
+.filter-tag{
     width: 24%;
     font-size: 16px;
     padding: 2px;
 }
 
-.role[b-7676dvugqh]{
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.role{
     position: absolute;
     margin-top: 450px;
     border-bottom: 2px solid #F5F5F5; 
     width: 80%;
 }
 
-.role2[b-7676dvugqh]{
-    border-bottom: 2px solid #F5F5F5; 
-    width: 100%;
-}
-
-
 /* ------------ question container -------------- */
 
-.ask-container[b-7676dvugqh]{
+.ask-container{
     position: absolute;
     margin-top: 470px;
     margin-left: 56%;
+    padding: 18px ;
+    background-color: lightblue;
+
 }
 
-.ask[b-7676dvugqh]{
+.ask{
     font-size: 1.7em;
 }
 
-.perguntas[b-7676dvugqh]{
+.perguntas{
    position: absolute;
    margin-top: 520px;
    padding-right: 65%;
    font-size: 2em ;
 }
 
-.main-containers[b-7676dvugqh]{
-    margin-top: 40px;
+.main-containers{
+    margin-top: 30px;
     width: 75%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: start;
 
 }
 
-.main-containers-area[b-7676dvugqh]{
-    width: 100%;
+.main-containers-area{
 
 }
 
-.question-container[b-7676dvugqh]{
+.profile-container{
+    margin-top: 40.5px;
+    width: 15%;
+    height: 150px;
+    background-color: tan;
+}
+
+.question-container{
     width: 100%;
     padding: 20px;
+    margin-left: 1.5%;
+
+    
 }
 
-.question-container-title[b-7676dvugqh]{
+.question-container-title{
+    margin-top: 18px;
 }
 
-.question-container-content[b-7676dvugqh]{
+.question-container-content{
     padding-bottom: 25px;
 
 }
 
-.question-container-tags[b-7676dvugqh]{
+.question-container-tags{
     padding: 10px;
     background-color: aqua;
 }
 
-.comment-container[b-7676dvugqh]{
+.tags{
+    padding: 12px 1%;
+    background-color: lightcoral;
+    width: 20px;
+}
+
+.tags a {
+    text-align: center;
+}
+
+.comment-container{
     padding-top: 25px;
 }

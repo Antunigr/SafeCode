@@ -10,12 +10,12 @@ namespace backend.Controllers;
 public class PostsController : Controller
 {
 
-    private readonly ContextQuest _context;
+    private readonly AppDbContext _context;
     private readonly IPostsCrud _postsCrud;
 
     private readonly ILogger<HomeController> _logger;
 
-    public PostsController(ILogger<HomeController> logger, IPostsCrud postsCrud, ContextQuest context)
+    public PostsController(ILogger<HomeController> logger, IPostsCrud postsCrud, AppDbContext context)
     {
         _logger = logger;
         _postsCrud = postsCrud;
@@ -23,7 +23,7 @@ public class PostsController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Posts()
+    public async Task<IActionResult> PostsView()
     {
         var quest = await GetQuestion();
         _logger.LogInformation($"Numero de Posts: {quest.Count()}");
@@ -32,59 +32,35 @@ public class PostsController : Controller
 
     [HttpGet("{CategoriesId}")]
     [Route("/{CategoriesId}")]
-    public async Task<IActionResult> PostsId(int CategoriesId)
+    public async Task<IActionResult> PostsByIdView(int categoriesId)
     {
-        var questionsList = await GetQuestionId(CategoriesId);
+        var questionsList = await GetQuestionById(categoriesId);
         List<Question> questions = new List<Question>();
-
-
 
         foreach (var question in questionsList)
         {
             questions.Add(question);
         }
-
-
         return View(questions);
     }
 
-
     public async Task<IEnumerable<Question>> GetQuestion()
     {
-        // return await _postsCrud.Get();
-        return await _context.QuestionModel.Include(q => q.Categories).ToListAsync();
-
+        return await _postsCrud.GetAllPosts();
     }
 
-    public async Task<IEnumerable<Question>> GetQuestionId(int CategoriesId)
+    public async Task<IEnumerable<Question>> GetQuestionById(int categoriesId)
     {
-        // return await _postsCrud.GetPostsById(CategoriesId);
-        return await _context.QuestionModel.Include(q => q.Categories).Where(q => q.CategoriesId == CategoriesId).ToListAsync();
+        return await _postsCrud.GetPostsById(categoriesId);
     }
 
     [HttpPost]
-    public async Task<ActionResult<Question>> CreatePost([FromForm] Question questionInput)
+    public async Task<ActionResult<Question>> AddPost([FromForm] Question questionInput)
     {
 
-        var newQuestion = await _postsCrud.Create(questionInput);
+        var newQuestion = await _postsCrud.CreatePost(questionInput);
         CreatedAtAction(nameof(GetQuestion), new { id = newQuestion.QuestionId }, newQuestion);
 
         return RedirectToAction("Posts", "Posts");
-
     }
-
-    // [Route("/test")]
-    // public IActionResult test()
-    // {
-    //     var List = _context.QuestionModel.Include(p => p.Categories).Where(p => p.Categories.CategoriesId.Equals(2)).ToList();
-    //     List.ForEach(p =>
-    //     {
-    //         Console.WriteLine(p.ToString());
-    //     });
-
-    //     return Content("ore");
-
-    // }
-
-
 }

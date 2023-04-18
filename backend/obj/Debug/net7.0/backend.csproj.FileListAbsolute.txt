@@ -83,5 +83,5 @@ C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\back
 C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\backend.genruntimeconfig.cache
 C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\ref\backend.dll
 C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\scopedcss\Views\Home\index.cshtml.rz.scp.css
-C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\scopedcss\Views\Posts\Posts.cshtml.rz.scp.css
-C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\scopedcss\Views\Posts\PostsId.cshtml.rz.scp.css
+C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\scopedcss\Views\Posts\PostsByIdView.cshtml.rz.scp.css
+C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\scopedcss\Views\Posts\PostsView.cshtml.rz.scp.css

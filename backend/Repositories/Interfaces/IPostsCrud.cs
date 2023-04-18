@@ -4,10 +4,10 @@ namespace SafeCode.Repositories
 {
     public interface IPostsCrud
     {
-        Task<IEnumerable<Question>> Get();
+        Task<IEnumerable<Question>> GetAllPosts();
         Task<IEnumerable<Question>> GetPostsById(int CategoriesId);
-        Task<Question> Create(Question question);
-        Task Update(Question question);
-        Task Delete(int Id);
+        Task<Question> CreatePost(Question question);
+        Task UpdatePost(Question question);
+        Task DeletePost(int Id);
     }
 }

@@ -9,7 +9,7 @@ using SafeCode.Models;
 
 namespace backend.Migrations
 {
-    [DbContext(typeof(ContextQuest))]
+    [DbContext(typeof(AppDbContext))]
     partial class ContextQuestModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

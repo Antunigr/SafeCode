@@ -1,0 +1,70 @@
+@using SafeCode.Models
+@model IEnumerable<Question>
+
+@{
+    ViewData["Title"] = "Posts Page";
+}
+    
+    <div class="filter-container">
+        <h2 class="filter-container-title">Buscar por categoria</h2>
+            <div class="filter-tag-container">
+               <a class="filter-tag tag java" href="/Posts/1"> Java </a>
+                <a class="filter-tag tag JavaScript" href="/Posts/7"> JavaScript </a>
+                <a class="filter-tag tag BancoDeDados" href="/Posts/12"> BancoDeDados</a>
+                <a class="filter-tag tag Android" href="/Posts/15"> Android </a>
+                <a class="filter-tag tag Csharp" href="/Posts/2"> Csharp</a>
+                <a class="filter-tag tag React" href="/Posts/10"> Html </a>
+                <a class="filter-tag tag Api" href="/Posts/14"> Api</a>
+                <a class="filter-tag tag Kotlin" href="/Posts/3"> Kotlin </a>
+                <a class="filter-tag tag Python" href="/Posts/5"> Python </a>
+                <a class="filter-tag tag Css" href="/Posts/9"> Css </a>
+                <a class="filter-tag tag Cloud" href="/Posts/13"> Cloud </a>
+                <a class="filter-tag tag C" href="/Posts/11"> C</a>
+                <a class="filter-tag tag Php" href="/Posts/4"> Php </a>
+                <a class="filter-tag tag Nodejs" href="/Posts/6"> Nodejs </a>
+                <a class="filter-tag tag Nodejs" href="/Posts/12"> NoSql </a>
+                <a class="filter-tag tag Nodejs" href="/Posts/15"> Flutter </a>
+                
+            </div>
+    </div>   
+    <div class="ask-container">
+        <a class="ask" href="/Pergunta">Faça uma pergunta</a>
+    </div>
+    <div class="role"></div>
+
+    <h2 class="perguntas">Perguntas</h2>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var item in Model)
+    {
+
+    <div class="main-containers">
+        
+        <div class="main-containers-area"></div>
+            <div class="profile-container">
+                a
+            </div>
+            <div class="question-container">
+                <h2 class="question-container-title">@item.Title</h2>
+                <p class="question-container-content">@item.Description</p>  
+                <a class="tags">
+                    @if (item.Categories != null)                                                                     
+                    {
+                        @item.Categories.CategoryName
+                    }
+                </a>
+                <div class="comment-container">
+                    <a>Ver comentarios</a>
+                </div>
+            </div>
+        </div> 
+    }
+}
+else
+{
+    <p>nenhum post</p>
+}
+  
+
+    
