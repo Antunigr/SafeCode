@@ -1,0 +1,15 @@
+@using SafeCode.Models
+@model RegisterViewModel
+
+
+<div>
+
+    <form method="Post" asp-controller="Account" asp-action="RegisterUser">
+        <input type="text" asp-for="Name" placeholder="Digite seu Nome">
+        <input type="text" asp-for="Email" placeholder="Digite seu Email">
+        <input type="text" asp-for="Password" placeholder="Digite sua Senha">
+        <input type="text" asp-for="ConfirmPassword" placeholder="Confirme sua Senha">
+        <input type="submit" value="Registrar">
+    </form>
+
+</div>

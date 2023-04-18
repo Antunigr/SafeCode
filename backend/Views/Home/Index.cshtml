@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SingInManager
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -25,7 +28,18 @@
                itaque corporis architecto repudiandae modi mollitia neque
                tempore explicabo nulla sint eum vel voluptates!
             </p>
-            <a id="redirection-display-button"> Fazer conta </a>
+
+            @if (SingInManager.IsSignedIn(User))
+            {
+                    <a class="redirection-display-button">ver conta</a>
+            }
+            else
+            {
+                    <a id="redirection-display-button" asp-controller="account" asp-action="registerView"> Fazer conta </a>
+            } 
+
+
+
         </div>
 
         <div class="redirection-display">

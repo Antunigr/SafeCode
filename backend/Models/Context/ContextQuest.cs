@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace SafeCode.Models
@@ -14,9 +15,11 @@ namespace SafeCode.Models
             .Entity<Categories>()
             .HasMany(qc => qc.Question)
             .WithOne(cq => cq.Categories);
+
+            modelBuilder.Entity<IdentityUserLogin<string>>().HasNoKey();
+            modelBuilder.Entity<IdentityUserRole<string>>().HasNoKey();
+            modelBuilder.Entity<IdentityUserToken<string>>().HasNoKey();
         }
-
-
 
         public DbSet<Categories> CategoriesModel { get; set; }
         public DbSet<Question> QuestionModel { get; set; }

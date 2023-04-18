@@ -18645,6 +18645,11 @@
   "RootNamespace": "backend",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Account\\RegisterView.cshtml",
+      "TargetPath": "Views\\Account\\RegisterView.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -18660,13 +18665,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Posts\\PostsByIdView.cshtml",
-      "TargetPath": "Views\\Posts\\PostsByIdView.cshtml",
+      "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Account\\LoginView.cshtml",
+      "TargetPath": "Views\\Account\\LoginView.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Posts\\PostsByIdView.cshtml",
+      "TargetPath": "Views\\Posts\\PostsByIdView.cshtml",
       "FileKind": "mvc"
     },
     {

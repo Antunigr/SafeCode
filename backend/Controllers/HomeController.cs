@@ -1,5 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System.Net;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers;
 
@@ -17,6 +19,7 @@ public class HomeController : Controller
         return View();
     }
 
+    [Authorize]
     [Route("Pergunta")]
     public IActionResult Pergunta()
     {

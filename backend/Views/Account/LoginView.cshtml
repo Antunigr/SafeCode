@@ -1,0 +1,13 @@
+@using SafeCode.Models
+@model LoginViewModel
+
+
+<div>
+
+    <form method="Post" asp-controller="Account" asp-action="LoginUser">
+        <input type="text" asp-for="Email" placeholder="Digite seu Email">
+        <input type="text" asp-for="Password" placeholder="Digite sua Senha">
+        <input type="submit" value="Logar">
+    </form>
+
+</div>
