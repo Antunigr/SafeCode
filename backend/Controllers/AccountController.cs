@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using SafeCode.Models;
 
 namespace backend.Controllers
@@ -71,35 +72,49 @@ namespace backend.Controllers
             return View();
         }
 
+
+
+        // [HttpPost]
+        // public async Task<IActionResult> LoginView(LoginViewModel model)
+        // {
+
+        //     if (ModelState.IsValid)
+        //     {
+        //         var result = await singInManager.PasswordSignInAsync(
+        //             model.Email, model.Password, false, false);
+
+        //         if (result.Succeeded)
+        //         {
+        //             return RedirectToAction("index", "home");
+        //         }
+        //         else
+        //         {
+        //             ModelState.AddModelError(string.Empty, "login invalido");
+        //         }
+        //     }
+
+        //     return RedirectToAction("RegisterView", "Account");
+        // }
+
         [HttpPost]
         public async Task<IActionResult> LoginView(LoginViewModel model)
         {
-
-            try
+            if (ModelState.IsValid)
             {
-                // if (ModelState.IsValid)
-                // {
-                //     var result = await singInManager.PasswordSignInAsync(
-                //         model.Email, model.Password, false, false);
+                var user = await userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+                    var result = await singInManager.PasswordSignInAsync(
+                        user, model.Password, false, false);
 
-                //     if (result.Succeeded)
-                //     {
-                //         return RedirectToAction("index", "home");
-                //     }
-                //     else
-                //     {
-                //         ModelState.AddModelError(string.Empty, "login invalido");
-                //     }
-                // }
-                Console.WriteLine("ok");
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("index", "home");
+                    }
+                }
             }
 
-            catch (System.Exception)
-            {
-
-                Console.WriteLine("error model state");
-            }
-
+            ModelState.AddModelError(string.Empty, "login invalido");
             return RedirectToAction("RegisterView", "Account");
         }
 
