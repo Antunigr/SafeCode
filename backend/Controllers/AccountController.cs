@@ -22,7 +22,7 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterUser(RegisterViewModel model)
+        public async Task<IActionResult> RegisterView(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -31,8 +31,22 @@ namespace backend.Controllers
                     UserName = model.Name,
                     Email = model.Email
                 };
+                var result = new IdentityResult();
+                try
+                {
+                    if (model.Password == "" || model.Password == null)
+                    {
+                        return RedirectToAction("index", "home");
 
-                var result = await userManager.CreateAsync(user, model.Password);
+                    }
+                    result = await userManager.CreateAsync(user, model.Password);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"ERRO::::::!!!!!!! {e}");
+                    throw;
+                }
+
 
                 if (result.Succeeded)
                 {
@@ -58,24 +72,45 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> LoginUser(LoginViewModel model)
+        public async Task<IActionResult> LoginView(LoginViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var result = await singInManager.PasswordSignInAsync(
-                    model.Email, model.Password, false, false);
 
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("index", "home");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "login invalido");
-                }
+            try
+            {
+                // if (ModelState.IsValid)
+                // {
+                //     var result = await singInManager.PasswordSignInAsync(
+                //         model.Email, model.Password, false, false);
+
+                //     if (result.Succeeded)
+                //     {
+                //         return RedirectToAction("index", "home");
+                //     }
+                //     else
+                //     {
+                //         ModelState.AddModelError(string.Empty, "login invalido");
+                //     }
+                // }
+                Console.WriteLine("ok");
             }
-            return View(model);
+
+            catch (System.Exception)
+            {
+
+                Console.WriteLine("error model state");
+            }
+
+            return RedirectToAction("RegisterView", "Account");
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await singInManager.SignOutAsync();
+            return RedirectToAction("index", "home");
+        }
+
 
 
 

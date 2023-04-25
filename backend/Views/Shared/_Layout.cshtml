@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SingInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -17,7 +20,17 @@
             <a class="nav-btn" href="/">Home</a>
             <a class="nav-btn"  href="/Posts">Posts</a>
             <a class="nav-btn">Blog</a>
-            <a class="right-btn">Conta</a>
+
+            @if (SingInManager.IsSignedIn(User))
+            {
+                <form asp-controller="Account" asp-action="Logout" method="post"> <button type="submit" class="right-btn">@User.Identity.Name</button> </form>
+            }
+            else
+            {
+                <a class="right-btn" href="/account/RegisterView">Conta</a>
+            }
+            
+            
         </nav>
 
         <input type="text" class="search-main" placeholder="Como centralizar uma div">
