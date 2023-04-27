@@ -5,52 +5,34 @@
     ViewData["Title"] = "Home Page";
 }
 
+
+
 <div class="introduction-container">
-    <h2 class="introduction-container-title">Bem vindo ao <span class="SafeCode">SafeCode</span></h2>
-    <p class="introduction-container-content"> 
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, beatae totam adipisci 
-        ab accusantium nulla consectetur iusto suscipit. Voluptatum molestiae iusto, repreh
-        enderit illum ullam dicta harum aliquid architecto ad illo.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, beatae totam adipisci 
-        ab accusantium nulla consectetur iusto suscipit. Voluptatum molestiae iusto, repreh
-        enderit illum ullam dicta harum aliquid architecto ad illo.
-    </p>   
-</div>
+    <div class="left-container">
+         <h2 class="introduction-container-title">Bem vindo ao <span class="SafeCode">SafeCode</span></h2>
+            <p class="introduction-container-content"> 
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, beatae totam adipisci 
+                ab accusantium nulla consectetur iusto suscipit. Voluptatum molestiae iusto, repreh
+                enderit illum ullam dicta harum aliquid architecto ad illo.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, beatae totam adipisci 
+                ab accusantium nulla consectetur iusto suscipit. Voluptatum molestiae iusto, repreh
+                enderit illum ullam dicta harum aliquid architecto ad illo.
+            </p>  
+    </div>
 
-    <div class="role"></div>
-
-<div class="redirection-container">
-    <div class="redirection-display-area">
-        <div class="redirection-display">
-            <h4 class="redirection-display-title">Venha fazer parte</h4>
-            <p class="redirection-display-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-               Libero aliquid, eos consectetur pariatur ipsum porro ad
-               itaque corporis architecto repudiandae modi mollitia neque
-               tempore explicabo nulla sint eum vel voluptates!
+    <div class="right-container">
+        <div class="right-container-main">
+            <p>
+                orem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, beatae totam adipisci 
+                ab accusantium nulla consectetur iusto suscipit. Voluptatum molestiae iusto, repreh
+                enderit illum ullam dicta harum aliquid architecto ad illo.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, beatae totam adipisci 
+                ab accusantium nulla consectetur iusto suscipit. Voluptatum molestiae iusto, repreh
+                enderit illum ullam dicta harum aliquid architecto ad illo.
+            <h1>Ver posts</h1>
             </p>
-
-            @if (SingInManager.IsSignedIn(User))
-            {
-                    <a class="redirection-display-button">ver conta</a>
-            }
-            else
-            {
-                    <a class="redirection-display-button" href="@Url.Action("RegisterView", "Account")"> Fazer conta </a>
-            } 
-
-
-
-        </div>
-
-        <div class="redirection-display">
-            <h4 class="redirection-display-title">Ver Posts</h4>
-            <p class="redirection-display-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-               Libero aliquid, eos consectetur pariatur ipsum porro ad
-               itaque corporis architecto repudiandae modi mollitia neque
-               tempore explicabo nulla sint eum vel voluptates!
-            </p>
-            <a class="redirection-display-button" href="/Posts"> Ver </a>
-        </div>
+        </div>  
     </div>
 </div>
-</div>
+
+

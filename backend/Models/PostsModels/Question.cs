@@ -13,6 +13,7 @@ namespace SafeCode.Models
         public string CodeArea { get; set; }
         public int CategoriesId { get; set; }
         public Categories Categories { get; set; }
+        // public RegisterViewModel RegisterViewModel { get; set; }
 
     }
 }

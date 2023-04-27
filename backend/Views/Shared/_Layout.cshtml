@@ -12,36 +12,33 @@
     <link rel="stylesheet" href="~/backend.styles.css" asp-append-version="true" />
 </head>
 <body>
-    
+
 <div class="main">
-    <div class="header">
-        <nav class="nav-main">
-            <a class="left-btn">Mais</a>
-            <a class="nav-btn" href="/">Home</a>
-            <a class="nav-btn"  href="/Posts">Posts</a>
-            <a class="nav-btn">Blog</a>
+    <header>
+            <nav class="nav-main">
+                <div class="left-nav">
+                    <a class="nav-btn">Mais</a>
+                    <a class="nav-btn">Home</a>
+                    <a class="nav-btn" href="/Posts">Posts</a>
+                    <a class="nav-btn">Blog</a>
+                    <a class="nav-btn">Conta</a>
+                    <input type="text" id="search-all" class="input-main" placeholder="Como centralizar uma div">
 
-            @if (SingInManager.IsSignedIn(User))
-            {
-                <form asp-controller="Account" asp-action="Logout" method="post"> <button type="submit" class="right-btn">@User.Identity.Name</button> </form>
-            }
-            else
-            {
-                <a class="right-btn" href="/account/RegisterView">Conta</a>
-            }
-            
-            
-        </nav>
-
-        <input type="text" class="search-main" placeholder="Como centralizar uma div">
-    </div>  
+                </div>
+                <div class="right-nav">
+                    <a class="nav-btn" href="/Account/Login">Login</a>
+                <a class="nav-btn"> <span class="register" href="/Account/Register">Register</span></a>
+                </div>
+            </nav>
+    </header>  
 
 
-    
-            @RenderBody()
-      
+
+
+        @RenderBody()
 </div>  
-   
+</div>  
+
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
