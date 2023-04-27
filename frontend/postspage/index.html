@@ -8,78 +8,136 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-
+ <body>
 <main>
-    <body>
+   
         <header>
             <nav class="nav-main">
-                <a class="left-btn">Mais</a>
-                <a class="nav-btn">Home</a>
-                <a class="nav-btn">Posts</a>
-                <a class="nav-btn">Blog</a>
-                <a class="right-btn">Conta</a>
-            </nav>
-
+                <div class="left-nav">
+                    <a class="nav-btn">Mais</a>
+                    <a class="nav-btn">Home</a>
+                    <a class="nav-btn">Posts</a>
+                    <a class="nav-btn">Blog</a>
+                    <a class="nav-btn">Conta</a>
         <input type="text" id="search-all" class="input-main" placeholder="Como centralizar uma div">
-    </header> 
-
-    <div class="filter-container">
-        <h2 class="filter-container-title">Buscar por categoria</h2>
-            <div class="filter-tag-container">
-                <a class="filter-tag"> Csharp </a>
-                <a class="filter-tag"> dotnet</a>
-                <a class="filter-tag"> javascript </a>
-                <a class="filter-tag"> nodejs </a>
-                <a class="filter-tag"> python </a>
-                <a class="filter-tag"> ruby </a>
-                <a class="filter-tag"> java </a>
-                <a class="filter-tag"> css </a>
-                <a class="filter-tag"> html </a>
-                <a class="filter-tag"> kotlyn </a>
-                <a class="filter-tag"> aspnet</a>
-                <a class="filter-tag"> typescript</a>
-                <a class="filter-tag"> Csharp </a>
-                <a class="filter-tag"> dotnet</a>
-                <a class="filter-tag"> javascript </a>
-                <a class="filter-tag"> nodejs </a>
-                <a class="filter-tag"> python </a>
-                <a class="filter-tag"> ruby </a>
-                <a class="filter-tag"> java </a>
-                <a class="filter-tag"> css </a>
-                <a class="filter-tag"> html </a>
-                <a class="filter-tag"> kotlyn </a>
-                <a class="filter-tag"> aspnet</a>
-                <a class="filter-tag"> typescript</a>
-            </div>
-    </div>   
-    <div class="role"></div>
-
-    <div class="main-containers">
-        <!-- <div class="role2"></div> -->
-        <div class="main-containers-area"></div>
-            <div class="profile-container">
-                a
-            </div>
-            <div class="question-container">
-                <h2 class="question-container-title">title</h2>
-                <p class="question-container-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta, voluptatum. Illum, architecto! Vitae fugit eligendi dignissimos exercitationem a culpa corporis laborum aperiam in rerum quibusdam ullam laudantium repudiandae, ipsam eos.</p>
-                <a class="question-container-tags">c#</a>
-                <a class="question-container-tags">apnet</a>
-                <a class="question-container-tags">entityFramework</a>
-                <div class="comment-container">
-                    <a>Ver comentarios</a>
+    
                 </div>
-            </div>
-        <!-- <div class="role2"></div> -->
+                <div class="right-nav">
+                    <a class="nav-btn">Login</a>
+                <a class="nav-btn"> <span class="register">Register</span></a>
+                </div>
+                
+            </nav>
+    
+    </header>      
+
+    <div class="bar-main">
+        <div class="left">
+        </div>
+        <div class="center">
+            <a id="botao1" onclick="mostrarTags('tags-language')">Linguagens</a>        
+            <a id="botao2"onclick="mostrarTags('tags-framework')">frameworks</a>        
+            <a id="botao3"onclick="mostrarTags('tags-database')">banco de dados</a>     
+            <a id="botao4"onclick="mostrarTags('tags-others')">outros</a>  
+        </div>
+        <div class="right"> 
+        <a>Faça uma pergunta</a>
+        </div>
     </div>
 
-    
+    <div id="tags-language">
+        <div class="tags-container">
+            <a>Csharp</a>
+            <a>Csharp</a>
+            <a>Csharp</a>
+            <a>Csharp</a>
+            <a>Csharp</a>
+            <a>Csharp</a>
+            <a>Csharp</a>
+            <a>Csharp</a>
+            <a>Csharp</a>   
+            <a>Csharp</a>   
+            <a>Csharp</a>   
+            <a>Csharp</a>   
+            <a>Csharp</a>   
+        </div>
+    </div>
 
+    <div id="tags-framework">
+        <div class="tags-container">
+           <a>identity</a>  
+           <a>identity</a>  
+           <a>identity</a>  
+           <a>identity</a>  
+           <a>identity</a>  
+           <a>identity</a>  
+           <a>identity</a>  
+           <a>identity</a>  
+           <a>identity</a>  
+           <a>identity</a>  
+           <a>identity</a>  
+        </div>
+    </div>
 
+    <div id="tags-database">
+        <div class="tags-container">
+           <a>sql</a>
+           <a>sql</a>
+           <a>sql</a>
+           <a>sql</a>
+           <a>sql</a>
+           <a>sql</a>
+           <a>sql</a>
+        </div>
+    </div>
 
+    <div id="tags-others">
+        <div class="tags-container">
+            <a>outros</a> 
+            <a>outros</a> 
+            <a>outros</a> 
+            <a>outros</a> 
+        </div>
+    </div>
 
+   <script>
+           var elementoAtual;
+  var ultimoBotaoClicado;
 
+  function mostrarTags(idElemento) {
+    var elemento = document.getElementById(idElemento);
+    var botaoClicado = document.getElementById("botao" + idElemento.slice(0));
 
+    if (botaoClicado === ultimoBotaoClicado) {
+      elemento.style.display = "none";
+      elementoAtual = null;
+      ultimoBotaoClicado = null;
+      return;
+    }
+
+    if (elementoAtual) {
+      elementoAtual.style.display = "none";
+    }
+
+    elemento.style.display = "flex";
+    elementoAtual = elemento;
+    ultimoBotaoClicado = botaoClicado;
+
+    document.addEventListener("click", esconderElemento);
+  }
+
+  function esconderElemento(evento) {
+    if (elementoAtual && !elementoAtual.contains(evento.target) && !botaoAtivo(evento.target)) {
+      elementoAtual.style.display = "none";
+      elementoAtual = null;
+      ultimoBotaoClicado = null;
+      document.removeEventListener("click", esconderElemento);
+    }
+  }
+
+  function botaoAtivo(elemento) {
+    return elemento.id === "botao1" || elemento.id === "botao2" || elemento.id === "botao3" || elemento.id === "botao4" ;}
+   </script>
 
 </main>    
 </body>
