@@ -18,18 +18,18 @@ header{
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color:#3a3b66; */
+  background-color:#F5F5F5;
 }
 
 .nav-main{
   display: flex;
   margin: 20px;
-  width: 100vw;
+  width: 97vw;
 }
 
 .nav-btn{
   font-size: 18px;
-  padding: 0 10px;
+  padding: 10px 10px;
   font-weight: 500;
   text-decoration: none;
   color: black;
@@ -49,7 +49,7 @@ margin-left: 50px;
 
 .register{
   background-color: #27AE5F;
-  padding: 13px 16px;
+  padding: 13px 16px; 
   color: white;
   border-radius: 10px;
 }

@@ -1,0 +1,122 @@
+*{
+    /* font-family: 'Source Code Pro', monospace; */
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+
+}
+
+body{
+    background-color: #3a3b66;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:#F5F5F5;
+    margin-bottom: 50px;
+}
+
+.nav-main{
+    display: flex;
+    margin: 20px;
+    width: 100%;
+}
+
+.nav-btn{
+    font-size: 18px;
+    padding: 0 10px;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+}
+
+.left-nav{
+width: 80%;
+margin-left: 50px;
+}
+
+.right-nav{
+    display: flex;
+    width: 20%;
+    justify-content: end;
+    margin-right: 50px;
+}
+
+.register{
+    background-color: #27AE5F;
+    padding: 13px 16px;
+    color: white;
+    border-radius: 10px;
+}
+
+
+
+.input-main{
+    width: 40%;
+    padding: 15px;  
+    border: 0; 
+    border-radius: 5px;    
+    background-color: #F5F5F5;
+}
+
+.input-main::placeholder{
+    font-size: 18px;
+    color: #b8b8b8;
+}
+
+#form{
+    width: 70%;
+    background-color: #F5F5F5;
+    justify-content: center;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+h3{
+    padding-left: 13px;
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+form input{
+    width: 90%;
+    padding: 13px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+}
+
+label{
+font-size: 17px;
+padding: 0;
+padding-left: 20px;
+}
+
+
+#submit{
+    width: 10%;
+    background-color: #3a3b66;
+    color: white;
+    text-align: center;
+}
+
+#code{
+    height: 300px;
+}

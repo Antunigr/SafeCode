@@ -72,30 +72,6 @@ namespace backend.Controllers
             return View();
         }
 
-
-
-        // [HttpPost]
-        // public async Task<IActionResult> LoginView(LoginViewModel model)
-        // {
-
-        //     if (ModelState.IsValid)
-        //     {
-        //         var result = await singInManager.PasswordSignInAsync(
-        //             model.Email, model.Password, false, false);
-
-        //         if (result.Succeeded)
-        //         {
-        //             return RedirectToAction("index", "home");
-        //         }
-        //         else
-        //         {
-        //             ModelState.AddModelError(string.Empty, "login invalido");
-        //         }
-        //     }
-
-        //     return RedirectToAction("RegisterView", "Account");
-        // }
-
         [HttpPost]
         public async Task<IActionResult> LoginView(LoginViewModel model)
         {

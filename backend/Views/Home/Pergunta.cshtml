@@ -6,11 +6,16 @@
 }
 
 
-<form method="post" asp-controller="Posts" asp-action="CreatePost">
-    <input type="text" asp-for="User" placeholder="qual seu nome"> 
-    <input type="text" asp-for="Title" placeholder="escolha um titulo"> 
-    <input type="text" asp-for="Description" placeholder="uma descricao"> 
-    <input type="text" asp-for="CodeArea" placeholder="code area"> 
-    <input type="submit" value="enviar">
+<div id="form">
+    <h3>Fazer uma pergunta</h3>
+   <form id="post-form" method="post" asp-controller="Posts" asp-action="CreatePost">
+    <label> Qual sua duvida? </label>
+    <input type="text" asp-for="Title" >
+    <label> Fala mais sobre ela </label>
+    <input type="text" asp-for="Description" >
+    <label> Escreva seu codigo aqui</label>
+    <input type="text" asp-for="CodeArea"  id="code">
+    <input type="submit" value="enviar" id="submit"> 
 
 </form>
+</div>

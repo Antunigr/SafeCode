@@ -35,12 +35,12 @@
         <div class="left">
         </div>
         <div class="center">
-            <a id="botao1" onclick="mostrarTags('tags-language')">Linguagens</a>        
-            <a id="botao2"onclick="mostrarTags('tags-framework')">frameworks</a>        
-            <a id="botao3"onclick="mostrarTags('tags-database')">banco de dados</a>     
-            <a id="botao4"onclick="mostrarTags('tags-others')">outros</a>  
+            <a onclick="mostrarTags('tags-language')">Linguagens</a>        
+            <a onclick="mostrarTags('tags-framework')">frameworks</a>        
+            <a onclick="mostrarTags('tags-database')">banco de dados</a>     
+            <a onclick="mostrarTags('tags-others')">outros</a>  
         </div>
-        <div class="right"> 
+        <div class="right">
         <a>Faça uma pergunta</a>
         </div>
     </div>
@@ -100,43 +100,64 @@
         </div>
     </div>
 
+
+
+    <div class="questions-main">
+        <div class="question-container">
+            <div class="left-question">
+                <div class="img"></div>
+                <p class="name-img">Nome</p>
+            </div>
+            <div class="right-question">
+                <a class="title">Estou tento problemas em centrazlicar minha divb no html5</a>
+                <div class="tags-question">
+                    <a>Csharp</a>
+                    <a>identity</a>
+                    <a>azure</a>
+                </div>
+                <a class="more" href=""> ver mais</a>
+            </div>
+        </div>
+
+    </div>
+
+
+         <div class="questions-main">
+        <div class="question-container">
+            <div class="left-question">
+                <div class="img"></div>
+                <p class="name-img">Nome</p>
+            </div>
+            <div class="right-question">
+                <a class="title">Estou tento problemas em centrazlrgente preciso muito de ajudaEstou tento problemas em centrazlicicar minha divb no html5</a>
+                <div class="tags-question">
+                    <a>Csharp</a>
+                    <a>identity</a>
+                    <a>azure</a>
+                </div>
+                <a class="more" href=""> ver mais</a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
    <script>
-           var elementoAtual;
-  var ultimoBotaoClicado;
+         var currentTag;
 
-  function mostrarTags(idElemento) {
-    var elemento = document.getElementById(idElemento);
-    var botaoClicado = document.getElementById("botao" + idElemento.slice(0));
+            function mostrarTags(id) 
+                {
+            var tag = document.getElementById(id);
 
-    if (botaoClicado === ultimoBotaoClicado) {
-      elemento.style.display = "none";
-      elementoAtual = null;
-      ultimoBotaoClicado = null;
-      return;
-    }
+            if (currentTag) {
+                currentTag.style.display = "none";
+            }
 
-    if (elementoAtual) {
-      elementoAtual.style.display = "none";
-    }
-
-    elemento.style.display = "flex";
-    elementoAtual = elemento;
-    ultimoBotaoClicado = botaoClicado;
-
-    document.addEventListener("click", esconderElemento);
-  }
-
-  function esconderElemento(evento) {
-    if (elementoAtual && !elementoAtual.contains(evento.target) && !botaoAtivo(evento.target)) {
-      elementoAtual.style.display = "none";
-      elementoAtual = null;
-      ultimoBotaoClicado = null;
-      document.removeEventListener("click", esconderElemento);
-    }
-  }
-
-  function botaoAtivo(elemento) {
-    return elemento.id === "botao1" || elemento.id === "botao2" || elemento.id === "botao3" || elemento.id === "botao4" ;}
+            tag.style.display = "flex";
+            currentTag = tag;
+            }
    </script>
 
 </main>    
