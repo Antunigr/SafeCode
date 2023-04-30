@@ -23,10 +23,31 @@ namespace SafeCode.Models
 
         public DbSet<Categories> CategoriesModel { get; set; }
         public DbSet<Question> QuestionModel { get; set; }
-
-
-
-
-
     }
+
+    public class ApplicationUser : IdentityUser<Guid>
+    {
+        public string QuestionUser { get; set; }
+        public Question QuestionId { get; set; }
+    }
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder
+            .Entity<Question>()
+                .HasMany<ApplicationUser>()
+                .WithOne()
+                .HasForeignKey(au => au.QuestionId)
+                .IsRequired();
+
+        }
+    }
+
 }
