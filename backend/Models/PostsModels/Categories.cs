@@ -4,10 +4,8 @@ namespace SafeCode.Models
 {
     public class Categories
     {
-        [Key]
-        public int CategoriesId { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         public string CategoryName { get; set; }
-        public ICollection<Question> Question { get; set; }
-
+        public ICollection<QuestionCategory> QuestionCategories { get; set; }
     }
 }

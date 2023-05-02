@@ -5,9 +5,9 @@ namespace SafeCode.Repositories
 {
     public class PostsCrud : IPostsCrud
     {
-        public readonly AppDbContext _context;
+        public readonly ApplicationDbContext _context;
 
-        public PostsCrud(AppDbContext context)
+        public PostsCrud(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -33,8 +33,7 @@ namespace SafeCode.Repositories
 
         public async Task<IEnumerable<Question>> GetPostsById(int categoriesId)
         {
-            var results = await _context.QuestionModel.Include(post => post.Categories).Where(post => post.CategoriesId == categoriesId).ToListAsync();
-            return results;
+            return await _context.QuestionModel.Include(post => post.Categories).Where(post => post.CategoriesId == categoriesId).ToListAsync();
         }
 
         public async Task UpdatePost(Question question)

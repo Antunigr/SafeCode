@@ -10,12 +10,12 @@ namespace backend.Controllers;
 public class PostsController : Controller
 {
 
-    private readonly AppDbContext _context;
+    private readonly ApplicationDbContext _context;
     private readonly IPostsCrud _postsCrud;
 
     private readonly ILogger<HomeController> _logger;
 
-    public PostsController(ILogger<HomeController> logger, IPostsCrud postsCrud, AppDbContext context)
+    public PostsController(ILogger<HomeController> logger, IPostsCrud postsCrud, ApplicationDbContext context)
     {
         _logger = logger;
         _postsCrud = postsCrud;
@@ -32,9 +32,9 @@ public class PostsController : Controller
 
     [HttpGet("{CategoriesId}")]
     [Route("/{CategoriesId}")]
-    public async Task<IActionResult> PostsByIdView(int categoriesId)
+    public async Task<IActionResult> PostsByIdView(string categoriesName)
     {
-        var questionsList = await GetQuestionById(categoriesId);
+        var questionsList = await GetQuestionById(categoriesName);
         List<Question> questions = new List<Question>();
 
         foreach (var question in questionsList)
@@ -49,9 +49,9 @@ public class PostsController : Controller
         return await _postsCrud.GetAllPosts();
     }
 
-    public async Task<IEnumerable<Question>> GetQuestionById(int categoriesId)
+    public async Task<IEnumerable<Question>> GetQuestionById(string categoriesName)
     {
-        return await _postsCrud.GetPostsById(categoriesId);
+        return await _postsCrud.GetPostsById(categoriesName);
     }
 
     [HttpPost]
@@ -59,7 +59,7 @@ public class PostsController : Controller
     {
 
         var newQuestion = await _postsCrud.CreatePost(questionInput);
-        CreatedAtAction(nameof(GetQuestion), new { id = newQuestion.QuestionId }, newQuestion);
+        CreatedAtAction(nameof(GetQuestion), new { id = newQuestion.Id }, newQuestion);
 
         return RedirectToAction("Posts", "Posts");
     }

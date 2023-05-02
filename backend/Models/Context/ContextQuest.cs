@@ -3,49 +3,60 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace SafeCode.Models
 {
-    public class AppDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+
+        public DbSet<ApplicationUser> ApplicationUserModel { get; set; }
+        public DbSet<Categories> CategoriesModel { get; set; }
+        public DbSet<Question> QuestionModel { get; set; }
+        public DbSet<QuestionCategory> QuestionCategories { get; set; }
+        public DbSet<UserQuestion> UserQuestions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder
-            .Entity<Categories>()
-            .HasMany(qc => qc.Question)
-            .WithOne(cq => cq.Categories);
+            base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<IdentityUserLogin<string>>().HasNoKey();
-            modelBuilder.Entity<IdentityUserRole<string>>().HasNoKey();
-            modelBuilder.Entity<IdentityUserToken<string>>().HasNoKey();
-        }
+            modelBuilder.Entity<ApplicationUser>()
+                .HasKey(u => u.Id);
 
-        public DbSet<Categories> CategoriesModel { get; set; }
-        public DbSet<Question> QuestionModel { get; set; }
-    }
+            modelBuilder.Entity<Question>()
+                .HasKey(q => q.Id);
 
-    public class ApplicationUser : IdentityUser<Guid>
-    {
-        public string QuestionUser { get; set; }
-        public Question QuestionId { get; set; }
-    }
+            modelBuilder.Entity<Categories>()
+            .HasKey(c => c.Id);
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
-    {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
+            modelBuilder.Entity<QuestionCategory>()
+           .HasKey(qc => new { qc.question_Id, qc.category_id });
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder
-            .Entity<Question>()
-                .HasMany<ApplicationUser>()
-                .WithOne()
-                .HasForeignKey(au => au.QuestionId)
-                .IsRequired();
+            modelBuilder.Entity<QuestionCategory>()
+           .HasOne(qc => qc.question)
+           .WithMany(q => q.QuestionCategories)
+           .HasForeignKey(qc => qc.question_Id);
+
+            modelBuilder.Entity<QuestionCategory>()
+            .HasOne(qc => qc.category)
+            .WithMany(c => c.QuestionCategories)
+            .HasForeignKey(qc => qc.category_id);
+
+            // -----------------------------------------------------------
+
+            modelBuilder.Entity<UserQuestion>()
+                .HasKey(uq => new { uq.user_id, uq.question_id });
+
+            modelBuilder.Entity<UserQuestion>()
+                .HasOne(uq => uq.applicationUser)
+                .WithMany(u => u.UserQuestions)
+                .HasForeignKey(uq => uq.user_id);
+
+            modelBuilder.Entity<UserQuestion>()
+                .HasOne(uq => uq.question)
+                .WithMany(q => q.UserQuestions)
+                .HasForeignKey(uq => uq.question_id);
+
+            modelBuilder.Entity<ApplicationUser>().HasKey(u => u.Id);
 
         }
     }

@@ -30,7 +30,8 @@ namespace backend.Controllers
                 var user = new IdentityUser
                 {
                     UserName = model.Name,
-                    Email = model.Email
+                    Email = model.Email,
+
                 };
                 var result = new IdentityResult();
                 try
