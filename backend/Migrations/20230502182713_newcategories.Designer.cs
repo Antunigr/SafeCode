@@ -12,8 +12,8 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230501003301_many-to-many")]
-    partial class manytomany
+    [Migration("20230502182713_newcategories")]
+    partial class newcategories
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -229,8 +229,11 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.Categories", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
@@ -245,6 +248,9 @@ namespace backend.Migrations
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CategoriesId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CodeArea")
                         .IsRequired()
@@ -263,22 +269,9 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoriesId");
+
                     b.ToTable("QuestionModel");
-                });
-
-            modelBuilder.Entity("SafeCode.Models.QuestionCategory", b =>
-                {
-                    b.Property<string>("question_Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("category_id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("question_Id", "category_id");
-
-                    b.HasIndex("category_id");
-
-                    b.ToTable("QuestionCategories");
                 });
 
             modelBuilder.Entity("SafeCode.Models.UserQuestion", b =>
@@ -347,23 +340,15 @@ namespace backend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SafeCode.Models.QuestionCategory", b =>
+            modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
-                    b.HasOne("SafeCode.Models.Categories", "category")
-                        .WithMany("QuestionCategories")
-                        .HasForeignKey("category_id")
+                    b.HasOne("SafeCode.Models.Categories", "Categories")
+                        .WithMany("questions")
+                        .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SafeCode.Models.Question", "question")
-                        .WithMany("QuestionCategories")
-                        .HasForeignKey("question_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("category");
-
-                    b.Navigation("question");
+                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("SafeCode.Models.UserQuestion", b =>
@@ -392,13 +377,11 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.Categories", b =>
                 {
-                    b.Navigation("QuestionCategories");
+                    b.Navigation("questions");
                 });
 
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
-                    b.Navigation("QuestionCategories");
-
                     b.Navigation("UserQuestions");
                 });
 #pragma warning restore 612, 618

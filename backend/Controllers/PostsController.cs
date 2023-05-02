@@ -32,7 +32,7 @@ public class PostsController : Controller
 
     [HttpGet("{CategoriesId}")]
     [Route("/{CategoriesId}")]
-    public async Task<IActionResult> PostsByIdView(string categoriesName)
+    public async Task<IActionResult> PostsByIdView(int categoriesName)
     {
         var questionsList = await GetQuestionById(categoriesName);
         List<Question> questions = new List<Question>();
@@ -49,7 +49,8 @@ public class PostsController : Controller
         return await _postsCrud.GetAllPosts();
     }
 
-    public async Task<IEnumerable<Question>> GetQuestionById(string categoriesName)
+
+    public async Task<IEnumerable<Question>> GetQuestionById(int categoriesName)
     {
         return await _postsCrud.GetPostsById(categoriesName);
     }

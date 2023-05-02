@@ -14,7 +14,7 @@ namespace SafeCode.Repositories
 
         public async Task<Question> CreatePost(Question question)
         {
-            _context.QuestionModel.AddAsync(question);
+            await _context.QuestionModel.AddAsync(question);
             await _context.SaveChangesAsync();
             return question;
         }

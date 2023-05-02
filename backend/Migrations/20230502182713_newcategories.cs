@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class manytomany : Migration
+    public partial class newcategories : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -55,27 +55,13 @@ namespace backend.Migrations
                 name: "CategoriesModel",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CategoriesModel", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "QuestionModel",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CodeArea = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_QuestionModel", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -185,25 +171,23 @@ namespace backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "QuestionCategories",
+                name: "QuestionModel",
                 columns: table => new
                 {
-                    questionId = table.Column<string>(name: "question_Id", type: "nvarchar(450)", nullable: false),
-                    categoryid = table.Column<string>(name: "category_id", type: "nvarchar(450)", nullable: false)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CodeArea = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CategoriesId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_QuestionCategories", x => new { x.questionId, x.categoryid });
+                    table.PrimaryKey("PK_QuestionModel", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_QuestionCategories_CategoriesModel_category_id",
-                        column: x => x.categoryid,
+                        name: "FK_QuestionModel_CategoriesModel_CategoriesId",
+                        column: x => x.CategoriesId,
                         principalTable: "CategoriesModel",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_QuestionCategories_QuestionModel_question_Id",
-                        column: x => x.questionId,
-                        principalTable: "QuestionModel",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -272,9 +256,9 @@ namespace backend.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_QuestionCategories_category_id",
-                table: "QuestionCategories",
-                column: "category_id");
+                name: "IX_QuestionModel_CategoriesId",
+                table: "QuestionModel",
+                column: "CategoriesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserQuestions_question_id",
@@ -301,22 +285,19 @@ namespace backend.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "QuestionCategories");
-
-            migrationBuilder.DropTable(
                 name: "UserQuestions");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "CategoriesModel");
-
-            migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "QuestionModel");
+
+            migrationBuilder.DropTable(
+                name: "CategoriesModel");
         }
     }
 }

@@ -1,5 +1,5 @@
 @using SafeCode.Models
-@model IEnumerable<QuestionCategory>
+@model IEnumerable<Question>
 
 @{
     ViewData["Title"] = "Posts Page";
@@ -67,11 +67,11 @@
                 <p class="name-img">Nome</p>
             </div>
             <div class="right-question">
-                <a class="title">@item.question.Title</a>
+                <a class="title">@item.UserQuestions</a>
                 <div class="tags-question">
-                     @if (item.category.CategoryName != null)
+                     @if (item.UserQuestions != null)
                     {
-                        <a>@item.</a>
+                        <a>@item.Categories.CategoryName</a>
                     } 
                 </div>
                 <a class="more" href=""> ver mais</a>
