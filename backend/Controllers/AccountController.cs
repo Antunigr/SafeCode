@@ -30,7 +30,8 @@ namespace backend.Controllers
                 var user = new ApplicationUser
                 {
                     UserName = model.Name,
-                    Email = model.Email
+                    Email = model.Email,
+                    UserQId = model.UserQId
 
                 };
                 var result = new IdentityResult();
@@ -88,11 +89,22 @@ namespace backend.Controllers
                     {
                         return RedirectToAction("index", "home");
                     }
+                    else
+                    {
+                        ViewData["errormessage"] = "login invalido";
+                    }
+
+                }
+                else
+                {
+                    ViewData["errormessage"] = "login invalido";
                 }
             }
 
+
+
             ModelState.AddModelError(string.Empty, "login invalido");
-            return RedirectToAction("RegisterView", "Account");
+            return View(model);
         }
 
 

@@ -1,16 +1,53 @@
 @using SafeCode.Models
 @model RegisterViewModel
 
+    <div class="main-container">
+        <h3>Crie sua conta</h3>
+        <p>Venha fazer parte da nossa comunidade!</p>
+        <div class="main-form">
+            <form method="Post">
+                <label>Nome</label>
+                <input type="text" asp-for="Name" placeholder="Digite seu Nome"class="inputMain">
+                <span asp-validation-for="Name" class="span"></span><br>
 
-<div>
+                <label>Email</label>
+                <input type="text" asp-for="Email" placeholder="Digite seu Email"class="inputMain">
+                <span asp-validation-for="Email" class="span"></span><br>
 
-    <form method="Post">
-        <input type="text" asp-for="Name" placeholder="Digite seu Nome">
-        <input type="text" asp-for="Email" placeholder="Digite seu Email">
-        <input type="text" asp-for="Password" placeholder="Digite sua Senha">
-        <input type="text" asp-for="ConfirmPassword" placeholder="Confirme sua Senha">
-        <input type="text" asp-for="UserQId" placeholder="userId">
-        <button type="submit"> reg </button>
-    </form>
+                <label>Senha</label>
+                <input type="text" asp-for="Password" placeholder="Digite sua Senha" class="inputMain">
+                <span asp-validation-for="Password" class="span"></span><br>
 
-</div>
+                <label>Confirmar senha</label>
+                <input type="text" asp-for="ConfirmPassword" placeholder="Confirme sua Senha"class="inputMain">
+                <span asp-validation-for="ConfirmPassword"class="span"></span><br>
+
+                <button type="submit">enviar</button>
+                <a class="aa" href="/Account/LoginView">Já possui uma conta? Clique aqui</a>
+            </form>
+        </div>
+    </div>
+
+     <style>
+        .inputMain{
+        padding: 15px;
+        border-radius: 24px;
+        border: 1px solid lightgrey;
+        margin: 3px;
+        width: 93.5%;
+        margin-top: 8px;
+        outline: 0;
+        }
+
+        .inputMain::placeholder{
+            font-size: 18px;
+            color: lightgray;
+            border: none;
+        }
+
+        .span{
+            color: red;
+            font-size: 17px;
+            font-weight: 600;
+        }
+    </style>

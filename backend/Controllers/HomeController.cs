@@ -16,6 +16,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+
+        ViewData["success_message"] = "Cadastro realizado com sucesso!";
+
         return View();
     }
 

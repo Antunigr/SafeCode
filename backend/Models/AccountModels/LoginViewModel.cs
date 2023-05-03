@@ -9,7 +9,7 @@ namespace SafeCode.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "A Senha é obrigatória")]
-        [DataType(DataType.Password)]
+        [DataType(DataType.Password, ErrorMessage = "Senha invalida")]
         public string Password { get; set; }
 
     }

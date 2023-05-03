@@ -25,6 +25,7 @@ public class PostsController : Controller
     [HttpGet]
     public async Task<IActionResult> PostsView()
     {
+
         var quest = await GetQuestion();
         _logger.LogInformation($"Numero de Posts: {quest.Count()}");
         return View(quest);
