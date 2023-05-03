@@ -1,4 +1,3 @@
-
 namespace SafeCode.Models
 {
     public class UserQuestion

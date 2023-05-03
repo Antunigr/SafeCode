@@ -9,7 +9,6 @@ namespace SafeCode.Models
         {
         }
 
-        public DbSet<ApplicationUser> ApplicationUserModel { get; set; }
         public DbSet<Categories> CategoriesModel { get; set; }
         public DbSet<Question> QuestionModel { get; set; }
         public DbSet<UserQuestion> UserQuestions { get; set; }

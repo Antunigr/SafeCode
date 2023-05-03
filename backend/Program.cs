@@ -4,17 +4,21 @@ using SafeCode.Models;
 using SafeCode.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using static SafeCode.Models.ApplicationDbContext;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+
 
 builder.Services.AddScoped<IPostsCrud, PostsCrud>();
 builder.Services.AddControllers(
@@ -40,18 +44,24 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.User.RequireUniqueEmail = false;
 });
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+builder.Services.AddAuthentication(options =>
 {
-    options.Cookie.Name = "AspNetCore.Cookies";
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-    options.SlidingExpiration = true;
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+    };
 });
-
-// builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//         .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
 var app = builder.Build();
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -77,5 +87,6 @@ app.MapControllerRoute(
 
 
 app.MapRazorPages();
+
 
 app.Run();

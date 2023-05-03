@@ -12,8 +12,8 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230502182713_newcategories")]
-    partial class newcategories
+    [Migration("20230502194355_usersnew")]
+    partial class usersnew
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
