@@ -5,19 +5,79 @@
     ViewData["Title"] = "Pergunta Page";
 }
 
-
 <div id="form">
-    <h3>Fazer uma pergunta</h3>
-   <form id="post-form" method="post" asp-controller="Posts" asp-action="AddPost">
-    <label> Qual sua duvida? </label>
+    <h3 >Faça uma pergunta</h3>
+   <form method="post" asp-controller="Posts" asp-action="AddPost">
+
+    <label> Qual sua duvida? </label><br>
+    <span asp-validation-for="Title"class="span"></span><br>
     <input type="text" asp-for="Title" >
-    <label> Fala mais sobre ela </label>
+    <label> Fala mais sobre ela: </label><br>
+    <span asp-validation-for="Description"class="span"></span><br>
     <input type="text" asp-for="Description" >
-    <label> Escreva seu codigo aqui</label>
-    <input type="text" asp-for="CodeArea"  id="code">
-    <label> Qual Categoria</label>
-    <input type="text" asp-for="CategoriesId">
-    <input type="submit" value="enviar" id="submit"> 
+    <label> Escreva seu codigo aqui:</label>
+
+    <div class="code-area">
+        <textarea type="text" asp-for="CodeArea" wrap="hard" class="code"></textarea>
+    </div>
+    <div class="tags">
+        <div class="tags-container">
+            <a >Java</a>
+            <a >Csharp</a>
+            <a >Python</a>
+            <a >Kotlin</a>
+            <a >Swift</a>
+            <a >JavaScript</a>
+            <a >C</a>
+            <a >C++</a>
+            <a >Php</a>   
+            <a >Ruby</a>   
+            <a >Css</a>   
+            <a >Html</a>   
+
+
+        </div>
+    </div>
+    <input type="submit" value="Enviar" id="submit"> 
 
 </form>
 </div>
+</div>
+
+
+<style>
+    .code-area{
+    height: 512px;
+    width: 100%;
+    border: 1px solid #3a3b66;
+}
+.code{
+    outline: 0;
+    border: none;
+    padding-bottom: 460px;
+    width: 100%;
+    overflow-y: scroll;
+    max-width: 97%;
+    margin: 10px;
+}
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+form input{
+    width: 97.5%;
+    padding: 13px;
+    margin: 5px;
+    border-radius: 10px;
+    display: flex;
+    border: 0.1px solid #3a3b66;
+    outline: 0;
+}
+
+.span{
+    color: red;
+    font-weight: 550;
+}
+</style>
