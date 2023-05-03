@@ -16,7 +16,6 @@ namespace SafeCode.Models
         [MaxLength(160, ErrorMessage = "Limite de caracteres ultrapassado"), MinLength(2, ErrorMessage = "Sua descrição precisa ter mais de dois caracteres")]
         public string? Description { get; set; }
 
-        [NotMapped]
         public string? CodeArea { get; set; }
         public DateTime CreationDate { get; set; }
         public ICollection<UserQuestion>? UserQuestions { get; set; }

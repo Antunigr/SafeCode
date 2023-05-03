@@ -33,7 +33,7 @@ namespace SafeCode.Repositories
 
         public async Task<IEnumerable<Question>> GetPostsById(int categoriesId)
         {
-            return await _context.QuestionModel.Include(post => post.Categories).Where(post => post.CategoriesId == categoriesId).ToListAsync();
+            return await _context.QuestionModel.Include(post => post.Categories).Where(post => post.Categories.Id == categoriesId).ToListAsync();
         }
 
         public async Task UpdatePost(Question question)

@@ -9,11 +9,13 @@ namespace backend.Controllers
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> singInManager;
+        private readonly ApplicationDbContext _dbContext;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext dbContext)
         {
             this.userManager = userManager;
             this.singInManager = signInManager;
+            _dbContext = dbContext;
         }
 
         [HttpGet]
@@ -35,6 +37,7 @@ namespace backend.Controllers
 
                 };
                 var result = new IdentityResult();
+
                 try
                 {
                     if (model.Password == "" || model.Password == null)
@@ -114,11 +117,6 @@ namespace backend.Controllers
             await singInManager.SignOutAsync();
             return RedirectToAction("index", "home");
         }
-
-
-
-
-
 
     }
 }

@@ -22,6 +22,7 @@ public class HomeController : Controller
         return View();
     }
 
+    [Authorize]
     [Route("Pergunta")]
     public IActionResult Pergunta()
     {

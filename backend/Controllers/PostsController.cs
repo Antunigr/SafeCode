@@ -33,9 +33,9 @@ public class PostsController : Controller
 
     [HttpGet("{CategoriesId}")]
     [Route("/{CategoriesId}")]
-    public async Task<IActionResult> PostsByIdView(int categoriesName)
+    public async Task<IActionResult> PostsByIdView(int CategoriesId)
     {
-        var questionsList = await GetQuestionById(categoriesName);
+        var questionsList = await GetQuestionById(CategoriesId);
         List<Question> questions = new List<Question>();
 
         foreach (var question in questionsList)
