@@ -5,23 +5,24 @@
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class _2rework : Migration
+    public partial class _7initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "CodeArea",
+            migrationBuilder.AddColumn<int>(
+                name: "ApplicationUserId",
                 table: "QuestionModel",
-                type: "nvarchar(max)",
-                nullable: true);
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "CodeArea",
+                name: "ApplicationUserId",
                 table: "QuestionModel");
         }
     }

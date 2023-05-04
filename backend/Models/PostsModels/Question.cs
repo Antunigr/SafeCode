@@ -18,10 +18,11 @@ namespace SafeCode.Models
 
         public string? CodeArea { get; set; }
         public DateTime CreationDate { get; set; }
-        public ICollection<UserQuestion>? UserQuestions { get; set; }
 
         public int CategoriesId { get; set; }
         public Categories? Categories { get; set; }
+        public int ApplicationUserId { get; set; }
+        public ApplicationUser? ApplicationUser { get; set; }
 
     }
 }

@@ -45,7 +45,7 @@ public class PostsController : Controller
         return View(questions);
     }
 
-    public async Task<IEnumerable<UserQuestion>> GetQuestion()
+    public async Task<IEnumerable<Question>> GetQuestion()
     {
         return await _postsCrud.GetAllPosts();
     }
