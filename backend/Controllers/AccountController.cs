@@ -36,6 +36,15 @@ namespace backend.Controllers
                     UserQId = model.UserQId
 
                 };
+
+                var existingUser = await userManager.FindByEmailAsync(model.Email);
+                if (existingUser != null)
+                {
+
+                    ModelState.AddModelError(string.Empty, "Endereço de email já está em uso.");
+                    return View(model);
+                }
+
                 var result = new IdentityResult();
 
                 try

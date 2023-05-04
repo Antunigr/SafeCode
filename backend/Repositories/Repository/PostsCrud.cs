@@ -26,9 +26,9 @@ namespace SafeCode.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Question>> GetAllPosts()
+        public async Task<IEnumerable<UserQuestion>> GetAllPosts()
         {
-            return await _context.QuestionModel.Include(post => post.Categories).ToListAsync();
+            return await _context.UserQuestions.Include(post => post.question).ToListAsync();
         }
 
         public async Task<IEnumerable<Question>> GetPostsById(int categoriesId)

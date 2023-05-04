@@ -1,5 +1,5 @@
 @using SafeCode.Models
-@model IEnumerable<Question>
+@model List<UserQuestion>
 
 @{
     ViewData["Title"] = "Posts Page";
@@ -67,14 +67,16 @@
         <div class="question-container">
             <div class="left-question">
                 <div class="img"></div>
-                <p class="name-img">Nome</p>
+                <p class="name-img">
+                    @item.applicationUser.UserName
+                </p>
             </div>
             <div class="right-question">
-                <a class="title">@item.Title</a>
+                <a class="title">@item.question.Title</a>
                 <div class="tags-question">
-                     @if (item.Categories != null)
+                     @if (item.question.Categories != null)
                     {
-                        <a>@item.Categories.CategoryName</a>
+                        <a>@item.question.Categories.</a>
                     } 
                 </div>
                 <a class="more" href=""> ver mais</a>
