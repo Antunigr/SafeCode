@@ -12,8 +12,8 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230504014037_7initial")]
-    partial class _7initial
+    [Migration("20230504195257_110inital")]
+    partial class _110inital
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -175,6 +175,9 @@ namespace backend.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<int>("Qid")
+                        .HasColumnType("int");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -218,8 +221,7 @@ namespace backend.Migrations
                     b.Property<int>("ApplicationUserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ApplicationUserRefId")
-                        .IsRequired()
+                    b.Property<string>("ApplicationUserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("CategoriesId")
@@ -243,7 +245,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserRefId");
+                    b.HasIndex("ApplicationUserId1");
 
                     b.HasIndex("CategoriesId");
 
@@ -252,11 +254,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
-                    b.HasOne("SafeCode.Models.ApplicationUser", "ApplicationUserRef")
+                    b.HasOne("SafeCode.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("questions")
-                        .HasForeignKey("ApplicationUserRefId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ApplicationUserId1");
 
                     b.HasOne("SafeCode.Models.Categories", "Categories")
                         .WithMany("questions")
@@ -264,7 +264,7 @@ namespace backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ApplicationUserRef");
+                    b.Navigation("ApplicationUser");
 
                     b.Navigation("Categories");
                 });

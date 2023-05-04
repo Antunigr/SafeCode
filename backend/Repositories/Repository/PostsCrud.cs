@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SafeCode.Models;
 
@@ -6,14 +8,22 @@ namespace SafeCode.Repositories
     public class PostsCrud : IPostsCrud
     {
         public readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public PostsCrud(ApplicationDbContext context)
+        public PostsCrud(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<Question> CreatePost(Question question)
         {
+            string userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var user = await _userManager.FindByIdAsync(userId);
+            question.ApplicationUserId = user.UserQId;
+
             await _context.QuestionModel.AddAsync(question);
             await _context.SaveChangesAsync();
             return question;

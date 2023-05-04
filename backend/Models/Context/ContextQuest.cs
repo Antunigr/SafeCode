@@ -20,9 +20,15 @@ namespace SafeCode.Models
             .WithOne(cq => cq.ApplicationUser)
             .HasForeignKey(fk => fk.ApplicationUserId);
 
+            modelBuilder.Entity<Question>()
+            .HasMany(qc => qc.applicationUsers)
+            .WithOne(cq => cq.Questions)
+            .HasForeignKey(fk => fk.UserQId);
+
             modelBuilder.Entity<Categories>()
             .HasMany(qc => qc.questions)
             .WithOne(cq => cq.Categories);
+
 
             modelBuilder.Entity<IdentityUserLogin<string>>().HasNoKey();
             modelBuilder.Entity<IdentityUserRole<string>>().HasNoKey();

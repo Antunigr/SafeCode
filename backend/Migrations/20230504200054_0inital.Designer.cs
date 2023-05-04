@@ -12,8 +12,8 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230504012650_6initial")]
-    partial class _6initial
+    [Migration("20230504200054_0inital")]
+    partial class _0inital
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -175,6 +175,9 @@ namespace backend.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<int>("Qid")
+                        .HasColumnType("int");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -215,7 +218,7 @@ namespace backend.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ApplicationUserRefId")
+                    b.Property<string>("ApplicationUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -240,7 +243,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserRefId");
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("CategoriesId");
 
@@ -249,9 +252,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
-                    b.HasOne("SafeCode.Models.ApplicationUser", "ApplicationUserRef")
+                    b.HasOne("SafeCode.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("questions")
-                        .HasForeignKey("ApplicationUserRefId")
+                        .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -261,7 +264,7 @@ namespace backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ApplicationUserRef");
+                    b.Navigation("ApplicationUser");
 
                     b.Navigation("Categories");
                 });

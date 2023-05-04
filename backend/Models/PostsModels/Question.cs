@@ -21,8 +21,9 @@ namespace SafeCode.Models
 
         public int CategoriesId { get; set; }
         public Categories? Categories { get; set; }
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
         public ApplicationUser? ApplicationUser { get; set; }
+        public ICollection<ApplicationUser> applicationUsers { get; set; }
 
     }
 }
