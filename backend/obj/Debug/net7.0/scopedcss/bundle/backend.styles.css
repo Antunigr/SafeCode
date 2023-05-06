@@ -60,6 +60,133 @@ p[b-cyhmi86i48]{
     margin-bottom: 50px;
 }
 
+/* _content/backend/Views/Account/ProfileView.cshtml.rz.scp.css */
+
+.input-main[b-goj7m16xu6]{
+    width: 40%;
+    padding: 15px;  
+    border: 0; 
+    border-radius: 5px;    
+    background-color: #F5F5F5;
+}
+
+.input-main[b-goj7m16xu6]::placeholder{
+    font-size: 18px;
+    color: #b8b8b8;
+}
+
+
+
+.body[b-goj7m16xu6]{
+    width: 100%;
+    height: 91.3vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.left-container[b-goj7m16xu6]{
+    width: 25%;
+    height: 775px;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: #33345c;
+
+}
+
+.row-container[b-goj7m16xu6] {
+    width: 71%;
+}
+
+.center-container[b-goj7m16xu6]{
+    width: 100%;
+    height: 65px;
+    background-color: #27AE5F;
+    color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+}
+
+.down-container[b-goj7m16xu6]{
+    background-color: #33345c;
+    width: 100%;
+    max-height: 700px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+
+
+    
+}
+
+.img[b-goj7m16xu6]{
+    display: flex;
+    width: 300px;
+    height: 300px;
+    background-color: antiquewhite;
+    margin-top:30px;
+    border-radius: 100%;
+}
+
+h3[b-goj7m16xu6]{
+    margin-top: 20px;
+    font-size: 25px;
+    color: whitesmoke    ;
+}
+
+.options[b-goj7m16xu6]{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.options-left[b-goj7m16xu6]{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px 0px;
+    width: 92%;
+    margin-left: 20px;
+}
+
+.options-right[b-goj7m16xu6]{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px 0px;
+}
+
+.posts-container-main[b-goj7m16xu6]{
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #F5F5F5;
+    width: 95%;
+    border-radius: 5px;
+    padding-top: 15px;
+    padding-left: 20px;
+    height: 100px;
+}
+
+
+
+[b-goj7m16xu6]::-webkit-scrollbar {
+    display: none;
+}
+
+.max[b-goj7m16xu6]{
+    height: 10000px;
+    padding-top: 5px;
+}
 /* _content/backend/Views/Account/RegisterView.cshtml.rz.scp.css */
 *[b-ijvhnss7zw]{
     margin: 0;

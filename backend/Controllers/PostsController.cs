@@ -63,6 +63,6 @@ public class PostsController : Controller
         var newQuestion = await _postsCrud.CreatePost(questionInput);
         CreatedAtAction(nameof(GetQuestion), new { id = newQuestion.Id }, newQuestion);
 
-        return RedirectToAction("Posts", "Posts");
+        return RedirectToAction("PostsView", "Posts");
     }
 }

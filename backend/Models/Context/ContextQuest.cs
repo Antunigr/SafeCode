@@ -23,7 +23,9 @@ namespace SafeCode.Models
             modelBuilder.Entity<Question>()
             .HasMany(qc => qc.applicationUsers)
             .WithOne(cq => cq.Questions)
-            .HasForeignKey(fk => fk.UserQId);
+            .HasForeignKey(fkq => fkq.QuestionsId)
+            .OnDelete(DeleteBehavior.Restrict);
+
 
             modelBuilder.Entity<Categories>()
             .HasMany(qc => qc.questions)

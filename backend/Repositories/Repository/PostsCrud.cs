@@ -22,7 +22,10 @@ namespace SafeCode.Repositories
         {
             string userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var user = await _userManager.FindByIdAsync(userId);
-            question.ApplicationUserId = user.UserQId;
+            question.ApplicationUserId = user.Id;
+
+            var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            currentUser.QuestionsId = question.Id;
 
             await _context.QuestionModel.AddAsync(question);
             await _context.SaveChangesAsync();

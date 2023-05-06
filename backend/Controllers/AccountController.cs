@@ -127,5 +127,12 @@ namespace backend.Controllers
             return RedirectToAction("index", "home");
         }
 
+
+        public IActionResult ProfileView()
+        {
+            return View();
+        }
+
+
     }
 }

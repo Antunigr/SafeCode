@@ -289,3 +289,4 @@ C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\scop
 C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\scopedcss\Views\Account\RegisterView.cshtml.rz.scp.css
 C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\scopedcss\Views\Account\LoginView.cshtml.rz.scp.css
+C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\scopedcss\Views\Account\ProfileView.cshtml.rz.scp.css

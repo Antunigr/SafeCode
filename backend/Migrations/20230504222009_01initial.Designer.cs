@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SafeCode.Models;
 
@@ -11,9 +12,11 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230504222009_01initial")]
+    partial class _01initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,6 +176,7 @@ namespace backend.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("QuestionsId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SecurityStamp")
@@ -254,7 +258,8 @@ namespace backend.Migrations
                     b.HasOne("SafeCode.Models.Question", "Questions")
                         .WithMany("applicationUsers")
                         .HasForeignKey("QuestionsId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Questions");
                 });

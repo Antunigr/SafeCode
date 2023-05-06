@@ -1,0 +1,38 @@
+@using SafeCode.Models
+@model IEnumerable<Question>
+
+@if (Model != null && Model.Any())
+{ 
+    @foreach (var item in Model)
+    {
+            <div class="body">
+                <div class="left-container">
+                    <div class="img"></div>
+                    <h3> @item.ApplicationUser.UserName</h3>
+                </div>
+                <div class="row-container">
+                    <div class="center-container">
+                        <div class="options-left">
+                             <a class="options">Meus Posts</a>
+                             <a class="options">Editar perfil</a>
+                        </div>
+                        <div class="options-right">
+                        </div>
+                    </div>
+                    <div class="down-container">
+                              <div class="max">
+
+                                @foreach (var questions in Model)
+                                {
+                                <div class="posts-container-main">
+                                    <h2>@questions.Title</h2>
+                                </div> 
+                                }
+                                
+                                
+                          </div> 
+                    </div>
+                </div>
+            </div>
+}
+}
