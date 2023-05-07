@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using SafeCode.Models;
+using SafeCode.Repositories;
 
 namespace backend.Controllers
 {
@@ -14,14 +15,16 @@ namespace backend.Controllers
         private readonly SignInManager<ApplicationUser> singInManager;
         private readonly ApplicationDbContext _dbContext;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IPostsCrud _postsCrud;
 
 
-        public AccountController(IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext dbContext)
+        public AccountController(IHttpContextAccessor httpContextAccessor, IPostsCrud postsCrud, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext dbContext)
         {
             this.userManager = userManager;
             this.singInManager = signInManager;
             _dbContext = dbContext;
             _httpContextAccessor = httpContextAccessor;
+            _postsCrud = postsCrud;
 
         }
 
@@ -154,5 +157,11 @@ namespace backend.Controllers
             return View(user);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            await _postsCrud.DeletePost(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
