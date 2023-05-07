@@ -1,6 +1,9 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using SafeCode.Models;
 
 namespace backend.Controllers
@@ -10,12 +13,16 @@ namespace backend.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> singInManager;
         private readonly ApplicationDbContext _dbContext;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext dbContext)
+
+        public AccountController(IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext dbContext)
         {
             this.userManager = userManager;
             this.singInManager = signInManager;
             _dbContext = dbContext;
+            _httpContextAccessor = httpContextAccessor;
+
         }
 
         [HttpGet]
@@ -33,8 +40,6 @@ namespace backend.Controllers
                 {
                     UserName = model.Name,
                     Email = model.Email,
-                    UserQId = model.UserQId
-
                 };
 
                 var existingUser = await userManager.FindByEmailAsync(model.Email);
@@ -127,12 +132,27 @@ namespace backend.Controllers
             return RedirectToAction("index", "home");
         }
 
-
-        public IActionResult ProfileView()
+        [Authorize]
+        [Route("Account/ProfileView/{nomeUsuario}")]
+        public async Task<IActionResult> ProfileView(string nomeUsuario)
         {
-            return View();
-        }
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (userId == null)
+            {
+                return RedirectToAction("index", "home");
+            }
 
+            if (string.IsNullOrEmpty(nomeUsuario))
+            {
+                nomeUsuario = _httpContextAccessor.HttpContext.User.Identity.Name;
+            }
+
+            var user = await userManager.Users
+                .Include(u => u.Iquestions)
+                .SingleOrDefaultAsync(u => u.UserName == nomeUsuario);
+
+            return View(user);
+        }
 
     }
 }

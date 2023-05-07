@@ -24,8 +24,10 @@ namespace SafeCode.Repositories
             var user = await _userManager.FindByIdAsync(userId);
             question.ApplicationUserId = user.Id;
 
-            var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
-            currentUser.QuestionsId = question.Id;
+            var currentUser = await _context.Users.Include(d => d.Iquestions).FirstOrDefaultAsync(u => u.Id == userId);
+            currentUser.Iquestions.Add(question);
+
+            var usersWithQuestions = _context.Users.Include(u => u.Iquestions).ToList();
 
             await _context.QuestionModel.AddAsync(question);
             await _context.SaveChangesAsync();

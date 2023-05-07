@@ -290,3 +290,10 @@ C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\bin\Debug\net7.0\Micr
 C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\scopedcss\Views\Account\RegisterView.cshtml.rz.scp.css
 C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\scopedcss\Views\Account\LoginView.cshtml.rz.scp.css
 C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\obj\Debug\net7.0\scopedcss\Views\Account\ProfileView.cshtml.rz.scp.css
+C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\bin\Debug\net7.0\System.Web.Mvc.dll
+C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\bin\Debug\net7.0\System.Web.Razor.dll
+C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\bin\Debug\net7.0\System.Web.Helpers.dll
+C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\bin\Debug\net7.0\System.Web.WebPages.Deployment.dll
+C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\bin\Debug\net7.0\System.Web.WebPages.Razor.dll
+C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\bin\Debug\net7.0\System.Web.WebPages.dll
+C:\Users\antun\OneDrive\Área de Trabalho\safeCode\backend\bin\Debug\net7.0\Microsoft.Web.Infrastructure.dll

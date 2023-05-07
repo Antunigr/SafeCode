@@ -1,38 +1,72 @@
 @using SafeCode.Models
-@model IEnumerable<Question>
+@model ApplicationUser
 
-@if (Model != null && Model.Any())
-{ 
-    @foreach (var item in Model)
-    {
-            <div class="body">
-                <div class="left-container">
-                    <div class="img"></div>
-                    <h3> @item.ApplicationUser.UserName</h3>
+
+@if (Model != null)
+{
+    <div class="body">
+        <div class="left-container">
+            <div class="img"></div>
+            <h3> @Model.UserName</h3> 
+        </div>
+        <div class="row-container">
+            <div class="center-container">
+                <div class="options-left">
+                     <a class="options">Meus Posts</a>
+                     <a class="options">Editar perfil</a>
                 </div>
-                <div class="row-container">
-                    <div class="center-container">
-                        <div class="options-left">
-                             <a class="options">Meus Posts</a>
-                             <a class="options">Editar perfil</a>
-                        </div>
-                        <div class="options-right">
-                        </div>
-                    </div>
-                    <div class="down-container">
-                              <div class="max">
-
-                                @foreach (var questions in Model)
-                                {
-                                <div class="posts-container-main">
-                                    <h2>@questions.Title</h2>
-                                </div> 
-                                }
-                                
-                                
-                          </div> 
-                    </div>
+                <div class="options-right">
                 </div>
             </div>
+            <div class="down-container">
+                <div class="max">
+                    
+                        @foreach (var item in Model.Iquestions)
+                        {
+                            <div class="posts-container-main">
+                                <h2 class="titleQ">@item.Title</h2> 
+                                <div class="deleteDiv"><button class="delete"> <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                                      </svg> </button></div>
+                            </div>
+                        } 
+                </div> 
+            </div>
+        </div>
+    </div>
 }
+
+
+<style>
+    .deleteDiv{
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    font-size: 20px;
+    width: 20%;
+    display: flex;
+    justify-content: end;
 }
+
+.delete{
+    /* background-color: rgb(236, 88, 88);
+     */
+    border: 3px solid black;
+    color: black;
+    width: 30%;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    padding-top: 5px;
+    
+}
+
+    .delete:hover
+    {
+        background-color: lightcoral;
+    }
+
+.titleQ{
+    width: 80%;
+    
+}
+</style>

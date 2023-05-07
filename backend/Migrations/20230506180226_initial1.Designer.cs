@@ -12,8 +12,8 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230504223757_201initial2")]
-    partial class _201initial2
+    [Migration("20230506180226_initial1")]
+    partial class initial1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -187,10 +187,6 @@ namespace backend.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserQId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("QuestionsId");
@@ -255,9 +251,8 @@ namespace backend.Migrations
             modelBuilder.Entity("SafeCode.Models.ApplicationUser", b =>
                 {
                     b.HasOne("SafeCode.Models.Question", "Questions")
-                        .WithMany("applicationUsers")
-                        .HasForeignKey("QuestionsId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .WithMany("IApplicationUser")
+                        .HasForeignKey("QuestionsId");
 
                     b.Navigation("Questions");
                 });
@@ -265,9 +260,9 @@ namespace backend.Migrations
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
                     b.HasOne("SafeCode.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("questions")
+                        .WithMany("Iquestions")
                         .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SafeCode.Models.Categories", "Categories")
@@ -283,7 +278,7 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("questions");
+                    b.Navigation("Iquestions");
                 });
 
             modelBuilder.Entity("SafeCode.Models.Categories", b =>
@@ -293,7 +288,7 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
-                    b.Navigation("applicationUsers");
+                    b.Navigation("IApplicationUser");
                 });
 #pragma warning restore 612, 618
         }

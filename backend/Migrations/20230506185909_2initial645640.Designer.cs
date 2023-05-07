@@ -12,8 +12,8 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230504222009_01initial")]
-    partial class _01initial
+    [Migration("20230506185909_2initial645640")]
+    partial class _2initial645640
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -154,6 +154,10 @@ namespace backend.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("IquestionsString")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -176,7 +180,6 @@ namespace backend.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("QuestionsId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SecurityStamp")
@@ -186,10 +189,6 @@ namespace backend.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserQId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -256,10 +255,8 @@ namespace backend.Migrations
             modelBuilder.Entity("SafeCode.Models.ApplicationUser", b =>
                 {
                     b.HasOne("SafeCode.Models.Question", "Questions")
-                        .WithMany("applicationUsers")
-                        .HasForeignKey("QuestionsId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .WithMany("IApplicationUser")
+                        .HasForeignKey("QuestionsId");
 
                     b.Navigation("Questions");
                 });
@@ -267,9 +264,9 @@ namespace backend.Migrations
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
                     b.HasOne("SafeCode.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("questions")
+                        .WithMany("Iquestions")
                         .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SafeCode.Models.Categories", "Categories")
@@ -285,7 +282,7 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("questions");
+                    b.Navigation("Iquestions");
                 });
 
             modelBuilder.Entity("SafeCode.Models.Categories", b =>
@@ -295,7 +292,7 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
-                    b.Navigation("applicationUsers");
+                    b.Navigation("IApplicationUser");
                 });
 #pragma warning restore 612, 618
         }

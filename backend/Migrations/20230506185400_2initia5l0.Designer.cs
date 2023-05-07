@@ -12,8 +12,8 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230504200054_0inital")]
-    partial class _0inital
+    [Migration("20230506185400_2initia5l0")]
+    partial class _2initia5l0
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -154,6 +154,10 @@ namespace backend.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("IquestionsString")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -175,8 +179,8 @@ namespace backend.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Qid")
-                        .HasColumnType("int");
+                    b.Property<string>("QuestionsId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -187,11 +191,9 @@ namespace backend.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserQId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("QuestionsId");
 
                     b.ToTable("Users");
                 });
@@ -250,12 +252,21 @@ namespace backend.Migrations
                     b.ToTable("QuestionModel");
                 });
 
+            modelBuilder.Entity("SafeCode.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("SafeCode.Models.Question", "Questions")
+                        .WithMany("IApplicationUser")
+                        .HasForeignKey("QuestionsId");
+
+                    b.Navigation("Questions");
+                });
+
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
                     b.HasOne("SafeCode.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("questions")
+                        .WithMany("Iquestions")
                         .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SafeCode.Models.Categories", "Categories")
@@ -271,12 +282,17 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("questions");
+                    b.Navigation("Iquestions");
                 });
 
             modelBuilder.Entity("SafeCode.Models.Categories", b =>
                 {
                     b.Navigation("questions");
+                });
+
+            modelBuilder.Entity("SafeCode.Models.Question", b =>
+                {
+                    b.Navigation("IApplicationUser");
                 });
 #pragma warning restore 612, 618
         }

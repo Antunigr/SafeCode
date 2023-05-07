@@ -12,8 +12,8 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230504195257_110inital")]
-    partial class _110inital
+    [Migration("20230506183406_2initial12")]
+    partial class _2initial12
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -175,8 +175,8 @@ namespace backend.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Qid")
-                        .HasColumnType("int");
+                    b.Property<string>("QuestionsId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -187,11 +187,9 @@ namespace backend.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserQId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("QuestionsId");
 
                     b.ToTable("Users");
                 });
@@ -218,10 +216,8 @@ namespace backend.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("ApplicationUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ApplicationUserId1")
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("CategoriesId")
@@ -245,18 +241,29 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId1");
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("CategoriesId");
 
                     b.ToTable("QuestionModel");
                 });
 
+            modelBuilder.Entity("SafeCode.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("SafeCode.Models.Question", "Questions")
+                        .WithMany("IApplicationUser")
+                        .HasForeignKey("QuestionsId");
+
+                    b.Navigation("Questions");
+                });
+
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
                     b.HasOne("SafeCode.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("questions")
-                        .HasForeignKey("ApplicationUserId1");
+                        .WithMany("Iquestions")
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("SafeCode.Models.Categories", "Categories")
                         .WithMany("questions")
@@ -271,12 +278,17 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("questions");
+                    b.Navigation("Iquestions");
                 });
 
             modelBuilder.Entity("SafeCode.Models.Categories", b =>
                 {
                     b.Navigation("questions");
+                });
+
+            modelBuilder.Entity("SafeCode.Models.Question", b =>
+                {
+                    b.Navigation("IApplicationUser");
                 });
 #pragma warning restore 612, 618
         }

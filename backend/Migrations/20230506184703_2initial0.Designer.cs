@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SafeCode.Models;
 
@@ -11,9 +12,11 @@ using SafeCode.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230506184703_2initial0")]
+    partial class _2initial0
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,11 +175,8 @@ namespace backend.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("QuestionId")
+                    b.Property<string>("QuestionsId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Questions")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -189,7 +189,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionId");
+                    b.HasIndex("QuestionsId");
 
                     b.ToTable("Users");
                 });
@@ -250,9 +250,11 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("SafeCode.Models.Question", null)
-                        .WithMany("IpplicationUser")
-                        .HasForeignKey("QuestionId");
+                    b.HasOne("SafeCode.Models.Question", "Questions")
+                        .WithMany("IApplicationUser")
+                        .HasForeignKey("QuestionsId");
+
+                    b.Navigation("Questions");
                 });
 
             modelBuilder.Entity("SafeCode.Models.Question", b =>
@@ -286,7 +288,7 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
-                    b.Navigation("IpplicationUser");
+                    b.Navigation("IApplicationUser");
                 });
 #pragma warning restore 612, 618
         }

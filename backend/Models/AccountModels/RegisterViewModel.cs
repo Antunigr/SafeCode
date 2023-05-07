@@ -25,9 +25,5 @@ namespace SafeCode.Models
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "As senhas não coferem")]
         public string? ConfirmPassword { get; set; }
-
-        [NotMapped]
-        public string? UserQId { get; set; } = Guid.NewGuid().ToString();
-
     }
 }
