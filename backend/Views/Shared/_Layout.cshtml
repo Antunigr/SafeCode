@@ -22,12 +22,12 @@
                     <a class="nav-btn" href="/">Home</a>
                     <a class="nav-btn" href="/Posts">Posts</a>
                     <a class="nav-btn" href="/Blog">Blog</a>
-                    <a class="nav-btn" href="/FeedBack">Sugestoes e FeedBack</a>
+                    <a class="nav-btn" href="/FeedBack">FeedBack</a>
 
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                            <a class="nav-btn" href="@Url.Action("ProfileView", "Account", new { nomeUsuario = User.Identity.Name })">Ver Perfil</a>
+                        <a class="nav-btn" href="@Url.Action("ProfileView", "Account", new { nomeUsuario = User.Identity.Name })">Ver Perfil</a>
                     }
 
 
@@ -37,14 +37,14 @@
 
                     @if (singInManager.IsSignedIn(User))
                     {
-                            <form method="post" asp-action="logout" asp-controller="Account"><button class="logout" type="submit">Sair</button></form>
+                        <form method="post" asp-action="logout" asp-controller="Account"><button class="logout" type="submit">Sair</button></form>
 
 
                     }
                     else
                     {
-                            <a class="nav-btn" href="/Account/LoginView">Login</a>
-                            <a class="nav-btn register" href="/Account/RegisterView">Register</a>
+                        <a class="nav-btn" href="/Account/LoginView">Login</a>
+                        <a class="nav-btn register" href="/Account/RegisterView">Register</a>
                     }
 
 

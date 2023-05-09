@@ -1,0 +1,57 @@
+
+
+<div class="main-container">
+    <form class="form">
+        <label>Digite aqui seu FeedBack!</label>
+        <textarea id="my-textarea" rows="1"></textarea>
+        <button type="submit"> Enviar </button>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.2/autosize.min.js"></script>
+
+<script>
+  autosize(document.getElementById('my-textarea'));
+</script>
+
+
+<style>
+    .main-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: start;
+        align-items: center;
+    }
+
+    .form{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #my-textarea{
+        width: 80%;
+        border-radius: 30px;
+        padding: 25px 25px;
+        border: 1px solid black;
+        font-size: 18px;
+        outline: none;
+    }
+
+    .form label{
+        font-size: 22px;
+        margin-bottom: 9px;
+    }
+
+    .form button{
+        margin-top: 7px;
+        font-size: 16.5px;
+        padding: 10px 14px;
+        color: white;
+        background-color: #27AE5F ;
+        border: none;
+        border-radius: 10px;
+        width: 80px;
+    }
+</style>

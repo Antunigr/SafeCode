@@ -266,7 +266,6 @@ p[b-ijvhnss7zw]{
 
 .left-container[b-e868cy2ctn]{
   width: 70%;
-
 }
 
 .right-container[b-e868cy2ctn]{
@@ -503,25 +502,6 @@ a[b-ptp2oyile6]{
     height: 80px;
 }
 
-.left-question[b-ptp2oyile6]{
-    margin-top: 20px;
-    /* background-color: #262626; */
-    width: 6%;
-}
-
-.img[b-ptp2oyile6]{
-    background-color: #27AE5F;
-    width: 90%;
-    height: 50px;
-    margin-left: 40%;
-}
-
-.name-img[b-ptp2oyile6]{
-    margin-left: 40%;
-    padding-top: 4px;
-text-align: center;
-}
-
 .right-question[b-ptp2oyile6]{
     width: 90%;
     padding-left: 30px;
@@ -529,7 +509,7 @@ text-align: center;
 }
 
 .title[b-ptp2oyile6]{
-font-size: 22px;
+font-size: 20px;
 
 }
 
@@ -593,7 +573,6 @@ cursor: pointer;
 
 }
 
-
 .right[b-w9satbcn13]{
 padding: 13px 10px;
 width: 30%;
@@ -650,25 +629,6 @@ width: 30%;
     height: 80px;
 }
 
-.left-question[b-w9satbcn13]{
-    margin-top: 20px;
-    /* background-color: #262626; */
-    width: 6%;
-}
-
-.img[b-w9satbcn13]{
-    background-color: #27AE5F;
-    width: 90%;
-    height: 50px;
-    margin-left: 40%;
-}
-
-.name-img[b-w9satbcn13]{
-    margin-left: 40%;
-    padding-top: 4px;
-text-align: center;
-}
-
 .right-question[b-w9satbcn13]{
     width: 90%;
     padding-left: 30px;
@@ -676,9 +636,7 @@ text-align: center;
 }
 
 .title[b-w9satbcn13]{
-font-size: 22px;
-
-
+font-size: 20px;
 
 }
 
@@ -696,9 +654,6 @@ a[b-w9satbcn13]{
     padding: 8px;
     border-radius: 2px;
     color: white;
-}
-
-.more[b-w9satbcn13]{
 }
 
 a[b-w9satbcn13]{

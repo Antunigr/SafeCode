@@ -36,7 +36,6 @@ cursor: pointer;
 
 }
 
-
 .right{
 padding: 13px 10px;
 width: 30%;
@@ -93,25 +92,6 @@ width: 30%;
     height: 80px;
 }
 
-.left-question{
-    margin-top: 20px;
-    /* background-color: #262626; */
-    width: 6%;
-}
-
-.img{
-    background-color: #27AE5F;
-    width: 90%;
-    height: 50px;
-    margin-left: 40%;
-}
-
-.name-img{
-    margin-left: 40%;
-    padding-top: 4px;
-text-align: center;
-}
-
 .right-question{
     width: 90%;
     padding-left: 30px;
@@ -119,9 +99,7 @@ text-align: center;
 }
 
 .title{
-font-size: 22px;
-
-
+font-size: 20px;
 
 }
 
@@ -139,9 +117,6 @@ a{
     padding: 8px;
     border-radius: 2px;
     color: white;
-}
-
-.more{
 }
 
 a{
