@@ -70,12 +70,17 @@
         <div class="question-container">
             <div class="left-question">
                 <div class="img"></div>
-                <p class="name-img">@item.ApplicationUser.UserName</p>
+                <p class="name-img">
+                     @if (item.ApplicationUser != null)
+                    {
+                      <a>@item.ApplicationUser.UserName</a> 
+                    }
+                </p>
             </div>
             <div class="right-question">
                 <a class="title">@item.Title</a>
                 <div class="tags-question">
-                     @if (item.Categories != null)
+                     @if (item.Categories.CategoryName != null)
                     {
                         <a>@item.Categories.CategoryName</a>
                     } 

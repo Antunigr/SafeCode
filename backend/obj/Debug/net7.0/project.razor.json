@@ -18695,6 +18695,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Home\\Blog.cshtml",
+      "TargetPath": "Views\\Home\\Blog.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Home\\FeedBack.cshtml",
+      "TargetPath": "Views\\Home\\FeedBack.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Account\\ProfileView.cshtml",
       "TargetPath": "Views\\Account\\ProfileView.cshtml",
       "FileKind": "mvc"

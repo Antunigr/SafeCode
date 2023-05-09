@@ -16,15 +16,24 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-
-        ViewData["success_message"] = "Cadastro realizado com sucesso!";
-
         return View();
     }
 
     [Authorize]
     [Route("Pergunta")]
     public IActionResult Pergunta()
+    {
+        return View();
+    }
+
+    [Route("Blog")]
+    public IActionResult Blog()
+    {
+        return View();
+    }
+
+    [Route("FeedBack")]
+    public IActionResult FeedBack()
     {
         return View();
     }
