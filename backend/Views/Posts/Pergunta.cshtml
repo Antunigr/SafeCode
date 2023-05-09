@@ -5,16 +5,18 @@
     ViewData["Title"] = "Pergunta Page";
 }
 
-<div id="form">
+<div id="form" class="validation-summary-valid" data-valmsg-summary="true">
     <h3 >Faça uma pergunta</h3>
-   <form method="post" asp-controller="Posts" asp-action="AddPost">
+   <form method="post" asp-controller="Posts" asp-action="Pergunta">
 
     <label> Qual sua duvida? </label>
-    <span asp-validation-for="Title"class="span"></span>
     <input type="text" asp-for="Title" >
-    <label> Fala mais sobre ela: </label>
-    <span asp-validation-for="Description"class="span"></span>
+    <span asp-validation-for="Title" class="span"></span>
+
+    <label> Fale mais sobre ela: </label>
     <input type="text" asp-for="Description">
+    <span asp-validation-for="Description" class="span"></span> 
+
     <input type="text" asp-for="CategoriesId">
     <label> Escreva seu codigo aqui:</label>
 
@@ -35,11 +37,11 @@
             <a >Ruby</a>   
             <a >Css</a>   
             <a >Html</a>   
-
-
         </div>
     </div>
-    <input type="submit" value="Enviar" id="submit"> 
+
+    <input id="submit" type="submit">
+
 
 </form>
 </div>

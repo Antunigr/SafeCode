@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using SafeCode.Models;
 
 namespace backend.Controllers;
 
@@ -15,13 +16,6 @@ public class HomeController : Controller
     }
 
     public IActionResult Index()
-    {
-        return View();
-    }
-
-    [Authorize]
-    [Route("Pergunta")]
-    public IActionResult Pergunta()
     {
         return View();
     }

@@ -18655,6 +18655,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Posts\\Pergunta.cshtml",
+      "TargetPath": "Views\\Posts\\Pergunta.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -18672,11 +18677,6 @@
     {
       "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\antun\\OneDrive\\Área de Trabalho\\safeCode\\backend\\Views\\Home\\Pergunta.cshtml",
-      "TargetPath": "Views\\Home\\Pergunta.cshtml",
       "FileKind": "mvc"
     },
     {

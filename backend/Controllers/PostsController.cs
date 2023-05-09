@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SafeCode.Models;
@@ -12,10 +13,10 @@ public class PostsController : Controller
 
     private readonly ApplicationDbContext _context;
     private readonly IPostsCrud _postsCrud;
-
     private readonly ILogger<HomeController> _logger;
-
-    public PostsController(ILogger<HomeController> logger, IPostsCrud postsCrud, ApplicationDbContext context)
+    public PostsController(ILogger<HomeController> logger,
+                           IPostsCrud postsCrud,
+                           ApplicationDbContext context)
     {
         _logger = logger;
         _postsCrud = postsCrud;
@@ -50,19 +51,34 @@ public class PostsController : Controller
         return await _postsCrud.GetAllPosts();
     }
 
-
     public async Task<IEnumerable<Question>> GetQuestionById(int categoriesName)
     {
         return await _postsCrud.GetPostsById(categoriesName);
     }
 
+    [HttpGet]
+    [Route("Pergunta")]
+    [Authorize]
+    public IActionResult Pergunta()
+    {
+        return View();
+    }
+
     [HttpPost]
-    public async Task<ActionResult<Question>> AddPost([FromForm] Question questionInput)
+    [Route("Pergunta")]
+    public async Task<ActionResult<Question>> Pergunta([FromForm] Question question)
     {
 
-        var newQuestion = await _postsCrud.CreatePost(questionInput);
-        CreatedAtAction(nameof(GetQuestion), new { id = newQuestion.Id }, newQuestion);
+        if (ModelState.IsValid)
+        {
+            var newQuestion = await _postsCrud.CreatePost(question);
+            CreatedAtAction(nameof(GetQuestion), new { id = newQuestion.Id }, newQuestion);
+            return RedirectToAction("PostsView", "Posts");
+        }
+        ModelState.AddModelError("", "Por favor, preencha todos os campos obrigatórios.");
 
-        return RedirectToAction("PostsView", "Posts");
+        return View(question);
     }
+
+
 }

@@ -18,7 +18,12 @@ namespace backend.Controllers
         private readonly IPostsCrud _postsCrud;
 
 
-        public AccountController(IHttpContextAccessor httpContextAccessor, IPostsCrud postsCrud, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext dbContext)
+        public AccountController(IHttpContextAccessor httpContextAccessor,
+                                 IPostsCrud postsCrud,
+                                 UserManager<ApplicationUser> userManager,
+                                 SignInManager<ApplicationUser> signInManager,
+                                 ApplicationDbContext dbContext)
+
         {
             this.userManager = userManager;
             this.singInManager = signInManager;
@@ -120,8 +125,6 @@ namespace backend.Controllers
                     ViewData["errormessage"] = "login invalido";
                 }
             }
-
-
 
             ModelState.AddModelError(string.Empty, "login invalido");
             return View(model);

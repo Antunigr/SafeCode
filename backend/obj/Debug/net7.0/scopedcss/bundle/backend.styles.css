@@ -335,15 +335,15 @@ footer[b-e868cy2ctn]{
   height: 300px;
   background-color: #262626;
 }
-/* _content/backend/Views/Home/Pergunta.cshtml.rz.scp.css */
-*[b-pt2k13enk5]{
+/* _content/backend/Views/Posts/Pergunta.cshtml.rz.scp.css */
+*[b-2as318xsn1]{
     /* font-family: 'Source Code Pro', monospace; */
     margin: 0;
     padding: 0;
     font-family: 'DM Sans', sans-serif;
 }
 
-#form[b-pt2k13enk5]{
+#form[b-2as318xsn1]{
     width: 70%;
     justify-content: center;
     padding: 50px;
@@ -353,7 +353,7 @@ footer[b-e868cy2ctn]{
 
 
 
-h3[b-pt2k13enk5]{
+h3[b-2as318xsn1]{
     padding-left: 13px;
     font-size: 30px;
     padding-bottom: 20px;
@@ -361,7 +361,7 @@ h3[b-pt2k13enk5]{
 
 
 
-label[b-pt2k13enk5]{
+label[b-2as318xsn1]{
 font-size: 19px;
 padding: 0;
 padding-left: 20px;
@@ -369,7 +369,7 @@ font-weight: 500;
 }
 
 
-#submit[b-pt2k13enk5]{
+#submit[b-2as318xsn1]{
     width: 10%;
     background-color: #3a3b66;
     color: white;
@@ -380,13 +380,13 @@ font-weight: 500;
     font-size: 19px;
 }
 
-.tags[b-pt2k13enk5]{
+.tags[b-2as318xsn1]{
     margin: 15px;
     display: flex;
     width: 100%;
 }
 
-.tags-container a[b-pt2k13enk5]{
+.tags-container a[b-2as318xsn1]{
     padding: 10px 15px;
     border: 0.5px solid #262626;
     border-radius: 5px;
@@ -394,7 +394,7 @@ font-weight: 500;
     margin: 6px;
 }
 
-.tags-container[b-pt2k13enk5]{
+.tags-container[b-2as318xsn1]{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -411,6 +411,7 @@ font-weight: 500;
     font-family: 'DM Sans', sans-serif;
 
 }
+
 
 .bar-main[b-ptp2oyile6]{
     width: 100%;
@@ -440,7 +441,6 @@ padding: 13px 10px;
 cursor: pointer;
 
 }
-
 
 .right[b-ptp2oyile6]{
 padding: 13px 10px;
@@ -473,6 +473,7 @@ width: 30%;
     padding-top: 15px;
     text-align: center;
     justify-content: center;
+
     
 }
 
@@ -481,11 +482,6 @@ width: 30%;
     margin: 7px 7px;
     border: 0.5px solid #262626;
     border-radius: 5px;
-    text-decoration: none;
-}
-
-a[b-ptp2oyile6]{
-    text-decoration: none;
 }
 
 
@@ -513,6 +509,10 @@ font-size: 20px;
 
 }
 
+a[b-ptp2oyile6]{
+    text-decoration: none;
+}
+
 .tags-question[b-ptp2oyile6]{
     margin-top: 7px;
     margin-bottom: 15px;
@@ -529,6 +529,7 @@ a[b-ptp2oyile6]{
     text-decoration: none;
     color: black;
 }
+
 
 .none[b-ptp2oyile6]{
     margin-top: 100px;

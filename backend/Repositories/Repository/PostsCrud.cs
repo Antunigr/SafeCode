@@ -11,7 +11,10 @@ namespace SafeCode.Repositories
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public PostsCrud(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor)
+        public PostsCrud(ApplicationDbContext context,
+                         UserManager<ApplicationUser> userManager,
+                        IHttpContextAccessor httpContextAccessor)
+
         {
             _context = context;
             _userManager = userManager;
