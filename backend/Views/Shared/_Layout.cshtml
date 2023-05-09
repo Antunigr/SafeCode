@@ -19,17 +19,16 @@
     <header>
             <nav class="nav-main">
                 <div class="left-nav">
-                    <a class="nav-btn">Mais</a>
+                    <a class="nav-btn" href="/FeedBack">Sugestoes e FeedBack</a>
                     <a class="nav-btn" href="/">Home</a>
                     <a class="nav-btn" href="/Posts">Posts</a>
-                    <a class="nav-btn">Blog</a>
+                    <a class="nav-btn" href="/Blog">Blog</a>
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                         <a class="nav-btn" href="@Url.Action("ProfileView", "Account", new { nomeUsuario = User.Identity.Name })">Ver Perfil</a>
+                        <a class="nav-btn" href="@Url.Action("ProfileView", "Account", new { nomeUsuario = User.Identity.Name })">Ver Perfil</a>
                     }
 
-                    <input type="text" id="search-all" class="input-main" placeholder="Como centralizar uma div">
 
                 </div>
                 <div class="right-nav">
@@ -43,8 +42,8 @@
                     }
                     else
                     {
-                         <a class="nav-btn" href="/Account/LoginView">Login</a>
-                         <a class="nav-btn register" href="/Account/RegisterView">Register</a>
+                        <a class="nav-btn" href="/Account/LoginView">Login</a>
+                        <a class="nav-btn register" href="/Account/RegisterView">Register</a>
                     }
 
 

@@ -34,11 +34,14 @@ namespace SafeCode.Repositories
             return question;
         }
 
-        public async Task DeletePost(int Id)
+        public async Task DeletePost(string Id)
         {
             var questionDelete = await _context.QuestionModel.FindAsync(Id);
-            _context.QuestionModel.Remove(questionDelete);
-            await _context.SaveChangesAsync();
+            if (questionDelete != null)
+            {
+                _context.QuestionModel.Remove(questionDelete);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task<IEnumerable<Question>> GetAllPosts()

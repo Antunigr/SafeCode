@@ -8,6 +8,6 @@ namespace SafeCode.Repositories
         Task<IEnumerable<Question>> GetPostsById(int CategoriesId);
         Task<Question> CreatePost(Question question);
         Task UpdatePost(Question question);
-        Task DeletePost(int Id);
+        Task DeletePost(string Id);
     }
 }

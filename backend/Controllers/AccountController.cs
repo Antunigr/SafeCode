@@ -158,10 +158,11 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeletePost(int id)
+        public async Task<IActionResult> DeletePost(string id)
         {
             await _postsCrud.DeletePost(id);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("ProfileView", new { nomeUsuario = User.Identity.Name });
+
         }
     }
 }

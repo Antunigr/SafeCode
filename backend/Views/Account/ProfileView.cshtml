@@ -13,7 +13,6 @@
             <div class="center-container">
                 <div class="options-left">
                      <a class="options">Meus Posts</a>
-                     <a class="options">Editar perfil</a>
                 </div>
                 <div class="options-right">
                 </div>
@@ -21,59 +20,70 @@
             <div class="down-container">
                 <div class="max">
                     
-                        @foreach (var item in Model.Iquestions)
+                  
+                    
+                    @foreach (var item in Model.Iquestions)
                         {
-                            <div class="posts-container-main">
-                                <h2 class="titleQ">@item.Title</h2> 
-                                <div class="deleteDiv">
 
-                                <form asp-action="DeletePost" asp-route-id="@Model.Id" method="post">
-                                    <a  asp-controller="Account" asp-action="Delete" asp-route-id="@Model.Id" 
-                                    class="btn btn-danger"Excluir 
-                                    class="delete"> 
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                                    </svg> 
-                                    </a>
-                               </form>     
+                            @if(item == null)
+                            {
+                                <h2 class="not-found">Nenhum post encontrado</h2>
+                            }
+                            else{
+                                <div class="posts-container-main">
+                                    <h2 class="titleQ">@item.Title</h2> 
+                                    <div class="deleteDiv">
+
+                                    <form class="submit-form" method="post">
+                                    <input asp-controller="Account" asp-action="DeletePost" asp-route-id="@item.Id" type="submit" class="danger" value="deletar post">
+                                    </form>  
+                                    </div>
                                 </div>
-                            </div>
-                        
+                            }
+                            
                         } 
                 </div> 
             </div>
         </div>
     </div>
 }
+ 
 
 
 <style>
     .deleteDiv{
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    font-size: 20px;
     width: 20%;
     display: flex;
-    justify-content: end;
 }
 
-.delete{
-    /* background-color: rgb(236, 88, 88);
-     */
-    border: 3px solid black;
+.not-found{
+    color:white;
+    text-align: center;
+}
+
+.submit-form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.danger{
+    padding: 10px 20px;
+    font-size: 20px;
+    border: 2px solid black;
     color: black;
-    width: 30%;
-    border-radius: 10px;
-    background-color: whitesmoke;
-    padding-top: 5px;
-    
+    cursor: pointer;
+    background-color: #fff;
 }
 
-    .delete:hover
-    {
-        background-color: lightcoral;
-    }
+.danger:hover{
+    background-color: lightcoral;
+    border: none;
+    color: white;
+
+}
 
 .titleQ{
     width: 80%;
