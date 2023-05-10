@@ -11,6 +11,7 @@ namespace SafeCode.Models
 
         public DbSet<Categories> CategoriesModel { get; set; }
         public DbSet<Question> QuestionModel { get; set; }
+        public DbSet<Comment> CommentsModel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
