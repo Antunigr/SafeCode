@@ -17,26 +17,38 @@
     <input type="text" asp-for="Description">
     <span asp-validation-for="Description" class="span"></span> 
 
-    <input type="text" asp-for="CategoriesId">
+     <input type="hidden" asp-for="CategoriesId">
     <label> Escreva seu codigo aqui:</label>
 
     <div class="code-area">
-        <textarea type="text" asp-for="CodeArea" wrap="hard" class="code"></textarea>
+        <textarea type="text" asp-for="CodeArea" wrap="hard" class="code" spellcheck="false"></textarea>
     </div>
     <div class="tags">
         <div class="tags-container">
-            <a >Java</a>
-            <a >Csharp</a>
-            <a >Python</a>
-            <a >Kotlin</a>
-            <a >Swift</a>
-            <a >JavaScript</a>
-            <a >C</a>
-            <a >C++</a>
-            <a >Php</a>   
-            <a >Ruby</a>   
-            <a >Css</a>   
-            <a >Html</a>   
+            <button type="button" class="tag" data-value="1">Java</button>
+            <button type="button" class="tag" data-value="2">Csharp</button>
+            <button type="button" class="tag" data-value="3">Python</button>
+            <button type="button" class="tag" data-value="4">Kotlin</button>
+            <button type="button" class="tag" data-value="5">Swift</button>
+            <button type="button" class="tag" data-value="6">JavaScript</button>
+            <button type="button" class="tag" data-value="7">C</button>
+            <button type="button" class="tag" data-value="8">C++</button>
+            <button type="button" class="tag" data-value="9">Php</button>
+            <button type="button" class="tag" data-value="10">Ruby</button>
+            <button type="button" class="tag" data-value="11">Css</button>
+            <button type="button" class="tag" data-value="12">Html</button>
+            <button type="button" class="tag" data-value="15">SQLServer</button>
+            <button type="button" class="tag" data-value="16">MySQL</button>
+            <button type="button" class="tag" data-value="17">PostgreSQL</button>
+            <button type="button" class="tag" data-value="18">SQLite</button>
+            <button type="button" class="tag" data-value="19">MongoDB</button>
+            <button type="button" class="tag" data-value="20">FireBase</button>
+            <button type="button" class="tag" data-value="21">AWS</button>
+            <button type="button" class="tag" data-value="22">Azure</button>
+            <button type="button" class="tag" data-value="23">MariaDB</button>
+            <button type="button" class="tag" data-value="13">SQL</button>
+            <button type="button" class="tag" data-value="14">NoSQL</button>
+            <button type="button" class="tag" data-value="24">Outro</button>
         </div>
     </div>
 
@@ -48,12 +60,46 @@
 </div>
 
 
+<script>
+  const buttons = document.querySelectorAll('.tag');
+  const categoriesInput = document.querySelector('input[name="CategoriesId"]');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      const button = event.currentTarget;
+      const value = button.dataset.value;
+
+      categoriesInput.value = value;
+      buttons.forEach((b) => b.classList.remove('selected'));
+      button.classList.add('selected');
+    });
+  });
+</script>
+
+
 <style>
     .code-area{
     height: 512px;
     width: 100%;
-    border: 1px solid #3a3b66;
+    background-color: #e7e7e7;
+    border-radius: 20px;
 }
+
+.tag{
+    padding: 10px 15px;
+    border: 0.5px solid #262626;
+    border-radius: 5px;
+    margin: 6px;
+    background-color: white;
+}
+
+.tag.selected{
+    background-color: #27AE5F;
+    outline: none;
+    border: none;
+    color: white;
+}
+
 .code{
     outline: 0;
     border: none;
@@ -61,7 +107,12 @@
     width: 100%;
     overflow-y: scroll;
     max-width: 97%;
-    margin: 10px;
+    margin: 10px; 
+    font-size: 15px;
+    color: #333;
+    box-shadow: none;
+    background-color: #e7e7e7;
+
 }
 form{
     display: flex;
@@ -74,7 +125,8 @@ form input{
     margin: 5px;
     border-radius: 10px;
     display: flex;
-    border: 0.1px solid #3a3b66;
+    background-color: #e7e7e7;
+    border: none;
     outline: 0;
 }
 

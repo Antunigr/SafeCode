@@ -7,13 +7,13 @@ namespace SafeCode.Repositories
 {
     public class PostsCrud : IPostsCrud
     {
-        public readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public PostsCrud(ApplicationDbContext context,
                          UserManager<ApplicationUser> userManager,
-                        IHttpContextAccessor httpContextAccessor)
+                         IHttpContextAccessor httpContextAccessor)
 
         {
             _context = context;

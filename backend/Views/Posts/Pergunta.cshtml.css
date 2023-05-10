@@ -48,19 +48,12 @@ font-weight: 500;
     width: 100%;
 }
 
-.tags-container a{
-    padding: 10px 15px;
-    border: 0.5px solid #262626;
-    border-radius: 5px;
-    width: 6%;
-    margin: 6px;
-}
 
 .tags-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
+    width: 98.5%;
     text-align: center;
     justify-content: center;
 }

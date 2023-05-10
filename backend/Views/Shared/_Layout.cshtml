@@ -27,9 +27,13 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <a class="nav-btn" href="@Url.Action("ProfileView", "Account", new { nomeUsuario = User.Identity.Name })">Ver Perfil</a>
+                                    <a class="nav-btn" href="@Url.Action("ProfileView", "Account", new { nomeUsuario = User.Identity.Name })">Ver Perfil</a>
                     }
 
+                    @* <form method="get" action="Search.cshtml" asp-page-handler="Search">
+                        <input name="search" type="text" id="search-all" class="input-main" placeholder="Como centralizar uma div">
+                        <button type="submit"></button>
+                  </form> *@
 
                 </div>
                 <div class="right-nav">
@@ -37,7 +41,7 @@
 
                     @if (singInManager.IsSignedIn(User))
                     {
-                        <form method="post" asp-action="logout" asp-controller="Account"><button class="logout" type="submit">Sair</button></form>
+                                    <form method="post" asp-action="logout" asp-controller="Account"><button class="logout" type="submit">Sair</button></form>
 
 
                     }
