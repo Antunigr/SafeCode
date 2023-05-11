@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
 namespace SafeCode.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -11,6 +13,7 @@ namespace SafeCode.Models
 
         public DbSet<Categories> CategoriesModel { get; set; }
         public DbSet<Question> QuestionModel { get; set; }
+        public DbSet<Comment> CommentsModel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,37 +31,38 @@ namespace SafeCode.Models
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Categories>()
-            .HasMany(qc => qc.questions)
-            .WithOne(cq => cq.Categories);
+                .HasMany(qc => qc.questions)
+                .WithOne(cq => cq.Categories);
 
+            modelBuilder.Entity<Comment>()
+                .HasOne(c => c.Question)
+                .WithMany(q => q.Comments)
+                .HasForeignKey(c => c.QuestionId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<IdentityUserLogin<string>>().HasNoKey();
             modelBuilder.Entity<IdentityUserRole<string>>().HasNoKey();
             modelBuilder.Entity<IdentityUserToken<string>>().HasNoKey();
+        }
 
-
-
-
+        public class CommentConfiguration : IEntityTypeConfiguration<Comment>
+        {
+            public void Configure(EntityTypeBuilder<Comment> builder)
+            {
+                builder.HasKey(c => c.Id);
+                builder.HasOne(c => c.Question)
+                    .WithMany(q => q.Comments)
+                    .HasForeignKey(c => c.QuestionId)
+                    .OnDelete(DeleteBehavior.Cascade);
+                builder.HasOne(c => c.ApplicationUser)
+                    .WithMany(u => u.Comments)
+                    .HasForeignKey(c => c.ApplicationUserId);
+                builder.HasOne(c => c.ParentComment)
+                    .WithMany(c => c.ChildrenComments)
+                    .HasForeignKey(c => c.ParentCommentId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            }
         }
     }
 
 }
-
-
-
-
-//   modelBuilder.Entity<ApplicationUser>()
-//             .HasMany(qc => qc.questions)
-//             .WithOne(cq => cq.ApplicationUser)
-//             .HasForeignKey(fk => fk.ApplicationUserId);
-
-//             modelBuilder.Entity<Question>()
-//             .HasMany(qc => qc.applicationUsers)
-//             .WithOne(cq => cq.questions)
-//             .HasForeignKey(fkq => fkq.QuestionsId)
-//             .OnDelete(DeleteBehavior.Restrict);
-
-
-//             modelBuilder.Entity<Categories>()
-//             .HasMany(qc => qc.questions)
-//             .WithOne(cq => cq.Categories);

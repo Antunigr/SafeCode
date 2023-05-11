@@ -23,6 +23,7 @@ namespace SafeCode.Models
         public string ApplicationUserId { get; set; }
         public ApplicationUser? ApplicationUser { get; set; }
         public ICollection<ApplicationUser>? IpplicationUser { get; set; }
+        public ICollection<Comment> Comments { get; set; }
 
     }
 }

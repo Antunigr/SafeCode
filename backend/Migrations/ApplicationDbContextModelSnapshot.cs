@@ -175,9 +175,6 @@ namespace backend.Migrations
                     b.Property<string>("QuestionId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Questions")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -209,6 +206,39 @@ namespace backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CategoriesModel");
+                });
+
+            modelBuilder.Entity("SafeCode.Models.Comment", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ParentCommentId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("QuestionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("ParentCommentId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("CommentsModel");
                 });
 
             modelBuilder.Entity("SafeCode.Models.Question", b =>
@@ -255,6 +285,31 @@ namespace backend.Migrations
                         .HasForeignKey("QuestionId");
                 });
 
+            modelBuilder.Entity("SafeCode.Models.Comment", b =>
+                {
+                    b.HasOne("SafeCode.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Comments")
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SafeCode.Models.Comment", "ParentComment")
+                        .WithMany("ChildrenComments")
+                        .HasForeignKey("ParentCommentId");
+
+                    b.HasOne("SafeCode.Models.Question", "Question")
+                        .WithMany("Comments")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("ParentComment");
+
+                    b.Navigation("Question");
+                });
+
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
                     b.HasOne("SafeCode.Models.ApplicationUser", "ApplicationUser")
@@ -276,6 +331,8 @@ namespace backend.Migrations
 
             modelBuilder.Entity("SafeCode.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("Iquestions");
                 });
 
@@ -284,8 +341,15 @@ namespace backend.Migrations
                     b.Navigation("questions");
                 });
 
+            modelBuilder.Entity("SafeCode.Models.Comment", b =>
+                {
+                    b.Navigation("ChildrenComments");
+                });
+
             modelBuilder.Entity("SafeCode.Models.Question", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("IpplicationUser");
                 });
 #pragma warning restore 612, 618

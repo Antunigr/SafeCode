@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +32,7 @@ public class PostsController : Controller
         return View(quest);
     }
 
-    [HttpGet("{CategoriesId}")]
+    [HttpGet("PostsByIdView/{CategoriesId}")]
     [Route("/{CategoriesId}")]
     public async Task<IActionResult> PostsByIdView(int CategoriesId)
     {
@@ -80,5 +80,45 @@ public class PostsController : Controller
         return View(question);
     }
 
+    // [HttpGet]
+    // [Route("AddComment")]
+    // public async Task<ActionResult> AddComment(string id)
+    // {
+    //     var comment = _context.CommentsModel.Include(c => c.ChildrenComments).FirstOrDefault(c => c.Id == id);
+    //     // if (comment == null)
+    //     // {
+    //     //     return NotFound();
+    //     // }
+    //     return View(comment);
+    // }
+
+    [HttpPost]
+    public ActionResult AddChildComment(string parentId, string commentText)
+    {
+        var parentComment = _context.CommentsModel.FirstOrDefault(c => c.Id == parentId);
+        if (parentComment != null)
+        {
+            var newComment = new Comment
+            {
+                Text = commentText,
+                CreationDate = DateTime.Now,
+                QuestionId = parentComment.QuestionId,
+                ApplicationUserId = "UserId",
+                ApplicationUser = null,
+                ParentCommentId = parentComment.Id,
+                ParentComment = parentComment,
+                ChildrenComments = new List<Comment>()
+            };
+            parentComment.ChildrenComments.Add(newComment);
+            _context.CommentsModel.Add(newComment);
+            _context.SaveChanges();
+        }
+
+        // Redirecionar para a página de detalhes do comentário pai após adicionar o novo comentário filho.
+        return RedirectToAction("PostsView", "Posts");
+    }
 
 }
+
+
+

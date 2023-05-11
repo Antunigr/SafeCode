@@ -1,11 +1,10 @@
 @using SafeCode.Models
 @model IEnumerable<Question>
-
 @{
     ViewData["Title"] = "Posts Page";
 }
 
-   
+
     <div class="bar-main">
         <div class="left">
         </div>
@@ -58,31 +57,35 @@
         </div>
     </div>
 
-
 @if (Model != null && Model.Any())
 {
-    @foreach (var item in Model)
+    @foreach (var question in Model)
     {
-    <div class="questions-main">
-        <div class="question-container">
-            <div class="right-question">
-                <a class="title">@item.Title</a>
-                <div class="tags-question">
-                     @if (item.Categories.CategoryName != null)
-                    {
-                        <a>@item.Categories.CategoryName</a>
-                    } 
-                </div>
-                <a class="more" href=""> ver mais</a>
-            </div>
-        </div>
+                <div class="questions-main">
+                    <div class="question-container">
+                        <div class="right-question">
+                            <a class="title">@question.Title</a>
+                            <div class="tags-question">
+                        @if (question.Categories.CategoryName != null)
+                        {
+                                        <a>@question.Categories.CategoryName</a>
+                        } 
+                            </div>
+                            <a class="more" href=""> ver mais</a>
 
-        </div>
- 
-}}
+                            <form method="post" asp-controller="Posts" asp-action="AddChildComment">
+                                <input type="hidden" name="parentId" value="@question.Id" />
+                                @* <input type="text" asp-for="commentText"> *@
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+    }
+}
 else
 {
-    <p class="none">nenhum post</p>
+        <p class="none">nenhum post</p>
 }
 
 
@@ -102,8 +105,8 @@ else
             }
    </script>
 
-  
 
-    
 
-    
+
+
+
